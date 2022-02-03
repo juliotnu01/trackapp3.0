@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "trackapp3.0",
+	"webDir": "dist",
+	"bundledWebRuntime": false
+}
