@@ -70,8 +70,8 @@ import { IonPage,
     IonSelect,
     IonSelectOption
  } from '@ionic/vue';
-import { defineComponent, onMounted, ref } from "vue";
-import { Storage } from '@capacitor/storage'; 
+import { defineComponent, onMounted } from "vue";
+// import { Storage } from '@capacitor/storage'; 
 
 export default  defineComponent({
   components: { IonPage,
@@ -93,20 +93,20 @@ export default  defineComponent({
     IonSelectOption
       },
   setup(){
-      const Test = ref();
+      // const Test = ref();
 
-    const checkName = async () => {
-      var { value } = await Storage.get({ key: 'test' });
-      Test.value = value;
-      alert(`Hello ${value}!`);
-    };
+    // const checkName = async () => {
+    //   var { value } = await Storage.get({ key: 'test' });
+    //   Test.value = value;
+    //   alert(`Hello ${value}!`);
+    // };
 
     onMounted(() => {
-      checkName()
+      // checkName()
     });
 
     return {
-      Test
+      // Test
     }
   }
 })

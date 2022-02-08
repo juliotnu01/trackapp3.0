@@ -13,6 +13,10 @@ const routes: Array<RouteRecordRaw> = [
     component: LoginPage,
   },
   {
+    path: '/view-unit',
+    component: () => import('@/views/ViewUnitPage.vue'),
+  },
+  {
     path: '/tabs/',
     component: TabsPage,
     children: [
@@ -39,6 +43,10 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+router.beforeEach((to, from) => {
+ 
 })
 
 export default router
