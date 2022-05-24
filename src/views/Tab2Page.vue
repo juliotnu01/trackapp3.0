@@ -1,39 +1,49 @@
 <template>
     <ion-page>
-        <ion-header>
+        <!-- <ion-header>
             <ion-toolbar>
                 <ion-title></ion-title>
             </ion-toolbar>
-        </ion-header>
+        </ion-header> -->
         <ion-content :fullscreen="true">
             <div id="map" style="width: 100%; height: 100%; z-index: 1" />
         </ion-content>
     </ion-page>
 </template>
 <script lang="ts">
-    /* eslint-disable */
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent , onIonViewDidEnter, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonIcon, IonItem, IonLabel } from '@ionic/vue';
-import { defineComponent, ref } from "vue";
+/* eslint-disable */
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, onIonViewDidEnter, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonIcon, IonItem, IonLabel } from '@ionic/vue';
+import { defineComponent, ref, computed } from "vue";
 import { useRouter } from "vue-router";
 import * as L from 'leaflet';
 import "leaflet/dist/leaflet.css";
 import axios from "axios";
 import { useStore } from 'vuex'
+import { Storage } from '@capacitor/storage';
 
 
 export default defineComponent({
-    components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonIcon, IonItem, IonLabel  },
+    components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonIcon, IonItem, IonLabel },
     setup() {
-        const map__ : any = ref({});
-        const sid__ : any = ref('');
-        const unidades__ : any = ref([]);
+        const map__: any = ref({});
+        const sid__: any = ref('');
+        const unidades__: any = ref([]);
         const _markerByUnit: any = ref([]);
-        let unidades_aceptables: any = ref([]);
         const router: any = useRouter();
         const store: any = useStore();
 
-        const InitMap = async () =>  {
-            map__.value = L.map("map").setView([10.6764195, -71.6881817], 18);
+        let token: any = computed({
+            get: () => { return store.getters.TOKEN },
+            set: (val: any) => { store.commit('setTOKEN', val) }
+        });
+
+         let loadingBar: any = computed({
+            get: () => { return store.getters.loadingBar },
+            set: (val: any) => { store.commit('SetloadingBar', val) }
+        });
+
+        const InitMap = async () => {
+            map__.value = L.map("map").setView([0, 0]);
             L.tileLayer(
                 "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibnVuZXpqdWxpb3QiLCJhIjoiY2t1NG9pNTk3MW8ydDJ4cWdpNnV4ZnZ6aSJ9.b9aMsL-D9kJ09lm4pnzzEg", {
                     attribution: "",
@@ -47,75 +57,237 @@ export default defineComponent({
         }
 
         const initSession = async () => {
-                var model = {
-                    url: `http://plataforma.sesagps.com/wialon/ajax.html?svc=token/login&params={"token":"d3c7bde835d5ed39de184b2751e1bcb859B1DE79FE9E327B71E628F8FE58E208E78031E7"}`,
-                    // url: `https://hst-api.wialon.com/wialon/ajax.html?svc=token/login&params={"token":"5dce19710a5e26ab8b7b8986cb3c49e58C291791B7F0A7AEB8AFBFCEED7DC03BC48FF5F8"}`,
-                };
-                let { data } = await axios.post(`https://ftrack.upwaresoft.com/api/init-session`, model, { headers: {"Access-Control-Allow-Origin": "*"} });
-                sid__.value = data.eid;
+            loadingBar.value = true;
+            var model = {
+                url: `http://plataforma.sesagps.com/wialon/ajax.html?svc=token/login&params={"token":"${token.value}"}`,
+            };
+            let { data } = await axios.post(`https://ftrack.upwaresoft.com/api/init-session`, model);
+            sid__.value = data.eid;
             // bact.value = data.user.bact;
-            // store.commit('setSid', sid.value)
+            store.commit('setSid', sid__.value)
             // store.commit('setBact', bact.value)
             getUnits();
         }
 
         const getUnits = async () => {
+            
             try {
                 var model = {
                     url: `http://plataforma.sesagps.com/wialon/ajax.html?svc=core/update_data_flags&params={"spec":[{"type":"type","data":"avl_unit","flags":4611686018427387903,"mode":0}]}&sid=${sid__.value}`,
-                    // url: `https://hst-api.wialon.com/wialon/ajax.html?svc=core/update_data_flags&params={"spec":[{"type":"type","data":"avl_unit","flags":4611686018427387903,"mode":0}]}&sid=${sid.value}`,
                 };
+                
                 let { data } = await axios.post(`https://ftrack.upwaresoft.com/api/get-units-session`, model);
+                loadingBar.value = false;
+
+                data[data.length + 1] = {
+                    i: 22222,
+                    f: 4611686018427388000,
+                    d: {
+                        uri: 'https://ftrack.upwaresoft.com/storage/perro.png',
+                        pos: {
+                            c: 163,
+                            f: 1073741825,
+                            lc: 0,
+                            s: 0,
+                            sc: 8,
+                            t: 1646028780,
+                            x: -78.4666708,
+                            y: -0.0671086,
+                            z: 2621,
+                        }
+                    }
+                }
+                data[data.length + 2] = {
+                    i: 33333,
+                    f: 4611686018427388000,
+                    d: {
+                        uri: 'https://ftrack.upwaresoft.com/storage/bicicleta.png',
+                        pos: {
+                            c: 163,
+                            f: 1073741825,
+                            lc: 0,
+                            s: 0,
+                            sc: 8,
+                            t: 1646028780,
+                            x: -78.4704517,
+                            y: -0.0680566,
+                            z: 2621,
+                        }
+                    }
+                }
+                data[data.length + 3] = {
+                    i: 44444,
+                    f: 4611686018427388000,
+                    d: {
+                        uri: 'https://ftrack.upwaresoft.com/storage/humano.png',
+                        pos: {
+                            c: 163,
+                            f: 1073741825,
+                            lc: 0,
+                            s: 0,
+                            sc: 8,
+                            t: 1646028780,
+                            x: -78.4725038,
+                            y: -0.0687681,
+                            z: 2621,
+                        }
+                    }
+                }
+
                 unidades__.value = data;
 
-                unidades__.value.forEach((unit: any) => {
-                    if (Object.prototype.hasOwnProperty.call(unit.d, "pos") && unit.d.pos) {
-                        unidades_aceptables.value.push(unit);
-                        var marker;
-                        var unitPos = unit.d.pos;
-                        map__.value.setView([unitPos.y, unitPos.x], 5);
-                        marker = L.marker([unitPos.y, unitPos.x], {
-                                draggable: false,
-                                icon: L.icon({
-                                    iconUrl: `http://plataforma.sesagps.com${unit.d.uri}`,
-                                    // iconUrl: `https://hst-api.wialon.com${unit.d.uri}`,
-                                    iconSize: [26,46],
-                                    shadowUrl: "",
-                                    
-                                }),
-                            })
-                            .on('click', function(e){
-                                SetUniViewMap(unit);
-                            });
 
-                            map__.value.setView([unitPos.y, unitPos.x], 12);
+                unidades__.value.forEach(async (unit: any) => {
+                    switch (router.currentRoute.value.params.type) {
+                        case "2":
+                            if (unit.i == 22222) {
+                                if (Object.prototype.hasOwnProperty.call(unit.d, "pos") && unit.d.pos) {
+                                    var marker;
+                                    var unitPos = unit.d.pos;
+                                    map__.value.setView([unitPos.y, unitPos.x], 5);
 
-                        _markerByUnit[unit.i] = marker;
-                        _markerByUnit.value.push(marker);
-                        _markerByUnit[unit.i].setLatLng([unitPos.y, unitPos.x]).addTo(map__.value);
+                                    marker = L.marker([unitPos.y, unitPos.x], {
+                                            draggable: false,
+                                            icon: L.icon({
+                                                iconUrl: unit.d.uri,
+                                                // iconUrl: `https://hst-api.wialon.com${unit.d.uri}`,
+                                               
+                                                shadowUrl: "",
 
+                                            }),
+                                        })
+                                        .on('click', function(e) {
+                                            SetUniViewMap(unit);
+                                        });
+
+                                    map__.value.setView([unitPos.y, unitPos.x], 12);
+
+                                    _markerByUnit[unit.i] = marker;
+                                    _markerByUnit.value.push(marker);
+                                    _markerByUnit[unit.i].setLatLng([unitPos.y, unitPos.x]).addTo(map__.value);
+                                }
+
+                            }
+                            break
+                        case "3":
+                            if (unit.i == 33333) {
+
+
+                                if (Object.prototype.hasOwnProperty.call(unit.d, "pos") && unit.d.pos) {
+                                    var marker;
+                                    var unitPos = unit.d.pos;
+                                    map__.value.setView([unitPos.y, unitPos.x], 5);
+
+                                    marker = L.marker([unitPos.y, unitPos.x], {
+                                            draggable: false,
+                                            icon: L.icon({
+                                                iconUrl: unit.d.uri,
+                                                // iconUrl: `https://hst-api.wialon.com${unit.d.uri}`,
+                                                shadowUrl: "",
+
+                                            }),
+                                        })
+                                        .on('click', function(e) {
+                                            SetUniViewMap(unit);
+                                        });
+
+                                    map__.value.setView([unitPos.y, unitPos.x], 12);
+
+                                    _markerByUnit[unit.i] = marker;
+                                    _markerByUnit.value.push(marker);
+                                    _markerByUnit[unit.i].setLatLng([unitPos.y, unitPos.x]).addTo(map__.value);
+                                }
+
+                            }
+                            break
+                        case "4":
+                            if (unit.i == 44444) {
+
+
+                                if (Object.prototype.hasOwnProperty.call(unit.d, "pos") && unit.d.pos) {
+                                    var marker;
+                                    var unitPos = unit.d.pos;
+                                    map__.value.setView([unitPos.y, unitPos.x], 5);
+
+                                    marker = L.marker([unitPos.y, unitPos.x], {
+                                            draggable: false,
+                                            icon: L.icon({
+                                                iconUrl: unit.d.uri,
+                                                // iconUrl: `https://hst-api.wialon.com${unit.d.uri}`,
+                                                shadowUrl: "",
+
+                                            }),
+                                        })
+                                        .on('click', function(e) {
+                                            SetUniViewMap(unit);
+                                        });
+
+                                    map__.value.setView([unitPos.y, unitPos.x], 12);
+
+                                    _markerByUnit[unit.i] = marker;
+                                    _markerByUnit.value.push(marker);
+                                    _markerByUnit[unit.i].setLatLng([unitPos.y, unitPos.x]).addTo(map__.value);
+                                }
+
+                            }
+                            break
+                        default:
+                           if (unit.i != 44444 && unit.i != 33333 && unit.i != 22222) {
+                                if (Object.prototype.hasOwnProperty.call(unit.d, "pos") && unit.d.pos) {
+                                    var marker;
+                                    var unitPos = unit.d.pos;
+                                    map__.value.setView([unitPos.y, unitPos.x], 5);
+
+                                    marker = L.marker([unitPos.y, unitPos.x], {
+                                            draggable: false,
+                                            icon: L.icon({
+                                                iconUrl: unit.d.uri,
+                                                // iconUrl: `https://hst-api.wialon.com${unit.d.uri}`,
+                                                iconSize: [26, 46],
+                                                shadowUrl: "",
+
+                                            }),
+                                        })
+                                        .on('click', function(e) {
+                                            SetUniViewMap(unit);
+                                        });
+
+                                    map__.value.setView([unitPos.y, unitPos.x], 12);
+
+                                    _markerByUnit[unit.i] = marker;
+                                    _markerByUnit.value.push(marker);
+                                    _markerByUnit[unit.i].setLatLng([unitPos.y, unitPos.x]).addTo(map__.value);
+                                }
+                            }
+                            break
                     }
                 });
-
                 // setInterval(() => listenEventUnits(), 5000);
             } catch (error) {
                 console.log(error);
+               
             }
         };
 
         const SetUniViewMap: any = (Unit: Object) => {
-            try{
-                router.push('/view-unit')
+            try {
+                router.push('/tabs/view-unit')
                 store.commit('setUnidad', Unit)
-            }catch(e){
+            } catch (e) {
                 console.log(e)
             }
         }
         onIonViewDidEnter(async () => {
-            if(!Object.entries(map__.value).length){
-                InitMap();
+            const { value } = await Storage.get({ key: 'TOKEN' });
+            if (!value) {
+                router.push('/login')
+            } else {
+                store.commit('setTOKEN', value)
+                if (!Object.entries(map__.value).length) {
+                    InitMap();
+                    initSession();
+                }
             }
-            initSession();
         })
 
 
