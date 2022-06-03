@@ -6,7 +6,8 @@ export default createStore({
     TOKEN: '',
     sid: '',
     notificaciones:[],
-    loadingBar: false
+    loadingBar: false,
+    data_sesa:{}
 
   },
   getters:{
@@ -14,10 +15,14 @@ export default createStore({
     TOKEN: state => state.TOKEN,
     sid: state => state.sid,
     notificaciones: state => state.notificaciones,
-    loadingBar: state => state.loadingBar
+    loadingBar: state => state.loadingBar,
+    data_sesa: state => state.data_sesa,
 
   },
   mutations: {
+    setDaSesa(state, data){
+      state.data_sesa = data
+    },
     SetloadingBar(state, data){
       state.loadingBar = data
     },

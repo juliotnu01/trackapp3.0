@@ -6,15 +6,10 @@
             </ion-toolbar>
         </ion-header> -->
     <ion-content :fullscreen="true">
-      <!-- <div id="map" style="width: 100%; height: 100%; z-index: 1" /> -->
+      <div id="map" style="width: 100%; height: 100%; z-index: 1" />
       <swiper class="style-j">
-        <swiper-slide
-          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi itaque
-          dolor veritatis, porro enim libero dolores accusantium exercitationem
-          provident unde, sed id perspiciatis. Ratione numquam nam perspiciatis
-          enim quod doloribus.</swiper-slide
-        >
-        <swiper-slide>Slide 3</swiper-slide>
+        <swiper-slide>Slide 1</swiper-slide>
+        <swiper-slide>Slide 2</swiper-slide>
         <swiper-slide>Slide 3</swiper-slide>
       </swiper>
     </ion-content>
@@ -91,6 +86,15 @@ export default defineComponent({
       },
     });
 
+     let DataSesa: any = computed({
+      get: () => {
+        return store.getters.data_sesa;
+      },
+      set: (val: any) => {
+        store.commit("setDaSesa", val);
+      },
+    });
+
     let loadingBar: any = computed({
       get: () => {
         return store.getters.loadingBar;
@@ -125,6 +129,7 @@ export default defineComponent({
         `https://ftrack.upwaresoft.com/api/init-session`,
         model
       );
+      DataSesa.value = data
       sid__.value = data.eid;
       // bact.value = data.user.bact;
       store.commit("setSid", sid__.value);
@@ -345,6 +350,7 @@ export default defineComponent({
         console.log(e);
       }
     };
+
     onIonViewDidEnter(async () => {
       const { value } = await Storage.get({ key: "TOKEN" });
       if (!value) {
@@ -368,11 +374,11 @@ export default defineComponent({
   background: red;
   width: 91%;
   top: 100%;
-  margin: 0px 3% 0px 3%;
-  height: 100px;
+  margin: 0px 3% 0px 4%;
+  height: 79px;
   font-family: sans-serif;
   border-radius: 10px 10px 10px 10px;
   box-shadow: 1px 2px 10px -3px;
-  transform: translate(0px, -200%);
+  transform: translate(0px, -250%);
 }
 </style>

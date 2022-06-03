@@ -2,12 +2,6 @@
   <ion-page>
     <ion-tabs>
       <ion-router-outlet></ion-router-outlet>
-
-       <swiper>
-        <swiper-slide>Slide 1</swiper-slide>
-        <swiper-slide>Slide 3</swiper-slide>
-        <swiper-slide>Slide 3</swiper-slide>
-      </swiper>
       <ion-progress-bar
         type="indeterminate"
         v-show="loadingBar"
