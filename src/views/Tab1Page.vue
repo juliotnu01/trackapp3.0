@@ -74,7 +74,7 @@ import {
 import { defineComponent, onMounted, computed, ref } from "vue";
 import { useStore } from "vuex";
 import { Storage } from "@capacitor/storage";
-// import { Storage } from '@capacitor/storage';
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   components: {
@@ -103,6 +103,7 @@ export default defineComponent({
     const monitor: any = ref("");
     const chasis: any = ref("");
     const marca: any = ref("");
+    const router = useRouter();
 
     let DataSesa: any = computed({
       get: () => {
@@ -201,6 +202,10 @@ export default defineComponent({
       GetMonitor();
       GetChasis();
       GetMarca()
+      
+      if(Object.entries(DataSesa.value).length <= 0){
+         router.push('/tabs/tab2')
+      }
     });
 
     return {

@@ -17,6 +17,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/choise-type-page',
     component: () => import('@/views/choisePage.vue'),
   },
+ 
   {
     path: '/tabs/',
     component: TabsPage,
@@ -40,6 +41,10 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'view-unit',
         component: () => import('@/views/ViewUnitPage.vue'),
+      },
+      {
+        path: 'config-page',
+        component: () => import('@/views/configPage.vue'),
       },
     ]
   }

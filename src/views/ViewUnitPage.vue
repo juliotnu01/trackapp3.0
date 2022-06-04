@@ -202,6 +202,192 @@
             </div> -->
 
       <div id="mapid2" style="width: 100%; height: 100%; z-index: 1" />
+      <swiper class="style-j" :autoplay="true">
+        <swiper-slide>
+          <div
+            class="grid grid-cols-12 h-fit shadow-[0_-1px_5px_0px_rgba(0,0,0,0.3)] rounded-lg"
+            @click="CmdParqueoSeguro"
+            :class="
+              btn_parqueoseguro
+                ? 'bg-[#00577B] text-white shadow-[0_-1px_5px_0px_rgba(0,87,123,1)] rounded-lg'
+                : 'text-[#00577B]'
+            "
+          >
+            <div
+              class="grid col-span-4 justify-center content-center rounded-l-lg"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-10 w-10 bg-red text-red red"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="red"
+                stroke-width="2"
+                :class="
+                  btn_parqueoseguro
+                    ? 'bg-[#00577B] text-white'
+                    : 'text-[#00577B]'
+                "
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"
+                />
+              </svg>
+            </div>
+            <div class="grid col-span-8 rounded-r-lg">
+              <div class="grid grid-rows-12 ga-4">
+                <div class="row-span-3 font-serif p-1">
+                  <h4>Parqueo Seguro</h4>
+                </div>
+                <div
+                  class="row-span-9 content-center text-justify font-serif text-[10px] pb-3 pr-5 pb-5"
+                >
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                </div>
+              </div>
+            </div>
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div
+            class="grid grid-cols-12 h-fit shadow-[0_-1px_5px_0px_rgba(0,0,0,0.3)] rounded-lg"
+            @click="CmdAperturaDePuertas"
+            :class="
+              btn_aperturaDePuertas
+                ? 'bg-[#00577B] text-white shadow-[0_-1px_5px_0px_rgba(0,87,123,1)] rounded-lg'
+                : 'text-[#00577B]'
+            "
+          >
+            <div
+              class="grid col-span-4 justify-center content-center rounded-l-lg"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-10 w-10 bg-red text-red red"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="red"
+                stroke-width="2"
+                :class="
+                  btn_aperturaDePuertas
+                    ? 'bg-[#00577B] text-white'
+                    : 'text-[#00577B]'
+                "
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"
+                />
+              </svg>
+            </div>
+            <div class="grid col-span-8 rounded-r-lg">
+              <div class="grid grid-rows-12 ga-4">
+                <div class="row-span-3 font-serif p-1">
+                  <h4>Apertura de Puertas</h4>
+                </div>
+                <div
+                  class="row-span-9 content-center text-justify font-serif text-[10px] pb-3 pr-5 pb-5"
+                >
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                </div>
+              </div>
+            </div>
+          </div>
+        </swiper-slide>
+        <swiper-slide
+          ><div
+            class="grid grid-cols-12 h-fit shadow-[0_-1px_5px_0px_rgba(0,0,0,0.3)] rounded-lg"
+            @click="CmdbloqueoAuto"
+            :class="
+              btn_bloqueoAuto
+                ? 'bg-[#00577B] text-white shadow-[0_-1px_5px_0px_rgba(0,87,123,1)] rounded-lg'
+                : 'text-[#00577B]'
+            "
+          >
+            <div
+              class="grid col-span-4 justify-center content-center rounded-l-lg"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-10 w-10 bg-red text-red red"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="red"
+                stroke-width="2"
+                :class="
+                  btn_bloqueoAuto ? 'bg-[#00577B] text-white' : 'text-[#00577B]'
+                "
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"
+                />
+              </svg>
+            </div>
+            <div class="grid col-span-8 rounded-r-lg">
+              <div class="grid grid-rows-12 ga-4">
+                <div class="row-span-3 font-serif p-1">
+                  <h4>Bloquer motor</h4>
+                </div>
+                <div
+                  class="row-span-9 pb-5 content-center text-justify font-serif text-[10px] pb-3 pr-5"
+                >
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                </div>
+              </div>
+            </div>
+          </div></swiper-slide
+        >
+        <swiper-slide
+          ><div
+            class="grid grid-cols-12 h-fit shadow-[0_-1px_5px_0px_rgba(0,0,0,0.3)] rounded-lg"
+            @click="CmdSOS"
+            :class="
+              btn_btnSOS
+                ? 'bg-[#00577B] text-white shadow-[0_-1px_5px_0px_rgba(0,87,123,1)] rounded-lg'
+                : 'text-[#00577B]'
+            "
+          >
+            <div
+              class="grid col-span-4 justify-center content-center rounded-l-lg"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-10 w-10 bg-red text-red red"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="red"
+                stroke-width="2"
+                :class="
+                  btn_btnSOS ? 'bg-[#00577B] text-white' : 'text-[#00577B]'
+                "
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"
+                />
+              </svg>
+            </div>
+            <div class="grid col-span-8 rounded-r-lg">
+              <div class="grid grid-rows-12 ga-4">
+                <div class="row-span-3 font-serif p-1">
+                  <h4>S.O.S</h4>
+                </div>
+                <div
+                  class="row-span-9 p-1 content-center text-justify font-serif text-[10px] pb-3 pr-5"
+                >
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                </div>
+              </div>
+            </div>
+          </div></swiper-slide
+        >
+      </swiper>
     </ion-content>
   </ion-page>
 </template>
@@ -231,10 +417,21 @@ import "leaflet/dist/leaflet.css";
 import { useStore } from "vuex";
 import axios from "axios";
 
-// import axios from "axios";
+import "swiper/css";
+import "swiper/css/autoplay";
+import "swiper/css/keyboard";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import "swiper/css/zoom";
+import "@ionic/vue/css/ionic-swiper.css";
+
+import { Autoplay } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/vue";
 
 export default defineComponent({
   components: {
+    Swiper,
+    SwiperSlide,
     // IonRow,
     // IonCol,
     // IonGrid,
@@ -290,7 +487,7 @@ export default defineComponent({
       );
     };
     const InitMap = (): any => {
-      map__.value = L.map("mapid2").setView([0, 0], 2);
+      map__.value = L.map("mapid2", { zoomControl: false }).setView([0, 0], 2);
       L.tileLayer(
         "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibnVuZXpqdWxpb3QiLCJhIjoiY2t1NG9pNTk3MW8ydDJ4cWdpNnV4ZnZ6aSJ9.b9aMsL-D9kJ09lm4pnzzEg",
         {
@@ -889,6 +1086,7 @@ export default defineComponent({
       btn_btnSOS,
       unit,
       CmdGetUbicacion,
+      modules: [Autoplay],
     };
   },
 });
@@ -928,5 +1126,17 @@ export default defineComponent({
 }
 .ion-icon {
   color: blue;
+}
+.style-j {
+  position: absolute;
+  background: #ffffff;
+  width: 91%;
+  top: 100%;
+  margin: 0px 3% 0px 4%;
+  height: 79px;
+  font-family: sans-serif;
+  border-radius: 10px 10px 10px 10px;
+  transform: translate(0px, -250%);
+  box-shadow: 0px 1px 6px 0px;
 }
 </style>

@@ -22,7 +22,7 @@
           <ion-icon src="/svg/notifications-outline.svg"></ion-icon>
           <ion-label>Notificaciones</ion-label>
         </ion-tab-button>
-        <ion-tab-button tab="tab4" href="/tabs/tab4">
+        <ion-tab-button tab="tab4" href="/tabs/config-page">
           <ion-icon src="/svg/options-outline.svg"></ion-icon>
           <ion-label><small> Configuración </small></ion-label>
         </ion-tab-button>

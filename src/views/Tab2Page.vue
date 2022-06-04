@@ -1,17 +1,62 @@
 <template>
   <ion-page>
-    <!-- <ion-header>
-            <ion-toolbar>
-                <ion-title></ion-title>
-            </ion-toolbar>
-        </ion-header> -->
     <ion-content :fullscreen="true">
       <div id="map" style="width: 100%; height: 100%; z-index: 1" />
-      <swiper class="style-j">
-        <swiper-slide>Slide 1</swiper-slide>
+      <swiper class="style-j" :autoplay="true">
+        <swiper-slide>
+          <ion-button
+            expand="full"
+            style="width: 100%; height: 50px"
+            @click="setOpen(true)"
+          >
+            Mecanico
+          </ion-button>
+        </swiper-slide>
         <swiper-slide>Slide 2</swiper-slide>
         <swiper-slide>Slide 3</swiper-slide>
       </swiper>
+
+      <ion-modal
+        :breakpoints="[0.1, 0.7, 1]"
+        :initialBreakpoint="0.7"
+        :is-open="isOpenRef"
+        @didDismiss="setOpen(false)"
+      >
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Mecanico de Confianza</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <ion-card>
+            <ion-card-header>
+              <ion-avatar>
+                <img
+                  src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+                />
+              </ion-avatar>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-item>
+                <ion-label position="floating">Nombre</ion-label>
+                <ion-input v-model="model_mecanico.nombre" disabled readonly></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Correo</ion-label>
+                <ion-input v-model="model_mecanico.correo" disabled readonly></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Numero de telefono</ion-label>
+                <ion-input v-model="model_mecanico.telefono" disabled readonly></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Dirección</ion-label>
+                <ion-input v-model="model_mecanico.direccion" disabled readonly></ion-input>
+              </ion-item>
+            </ion-card-content>
+          </ion-card>
+        </ion-content>
+      </ion-modal>
     </ion-content>
   </ion-page>
 </template>
@@ -32,15 +77,19 @@ import {
   IonIcon,
   IonItem,
   IonLabel,
+  IonAvatar,
+  IonButton,
+  IonModal,
+  IonInput,
 } from "@ionic/vue";
-import { defineComponent, ref, computed } from "vue";
+import { defineComponent, ref, computed, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import * as L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import axios from "axios";
 import { useStore } from "vuex";
 import { Storage } from "@capacitor/storage";
-
+import { Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/vue";
 
 import "swiper/css";
@@ -68,6 +117,10 @@ export default defineComponent({
     IonIcon,
     IonItem,
     IonLabel,
+    IonAvatar,
+    IonButton,
+    IonModal,
+    IonInput,
   },
   setup() {
     const map__: any = ref({});
@@ -76,6 +129,36 @@ export default defineComponent({
     const _markerByUnit: any = ref([]);
     const router: any = useRouter();
     const store: any = useStore();
+    const isOpenRef = ref(false);
+
+    const model_mecanico: any = ref({
+      nombre: "",
+      correo: "",
+      telefono: "",
+      direccion: "",
+    });
+
+    const GetMecanicoNombre = async () => {
+      var { value } = await Storage.get({ key: "Data_mecanico_nombre" });
+      model_mecanico.value.nombre = value;
+    };
+
+    const GetMecanicoCorreo = async () => {
+      var { value } = await Storage.get({ key: "Data_mecanico_correo" });
+      model_mecanico.value.correo = value;
+    };
+
+    const GetMecanicoTelefono = async () => {
+      var { value } = await Storage.get({ key: "Data_mecanico_telefono" });
+      model_mecanico.value.telefono = value;
+    };
+
+    const GetMecanicoDireccion = async () => {
+      var { value } = await Storage.get({ key: "Data_mecanico_direccion" });
+      model_mecanico.value.direccion = value;
+    };
+
+    const setOpen = (state: boolean) => (isOpenRef.value = state);
 
     let token: any = computed({
       get: () => {
@@ -86,7 +169,7 @@ export default defineComponent({
       },
     });
 
-     let DataSesa: any = computed({
+    let DataSesa: any = computed({
       get: () => {
         return store.getters.data_sesa;
       },
@@ -129,7 +212,7 @@ export default defineComponent({
         `https://ftrack.upwaresoft.com/api/init-session`,
         model
       );
-      DataSesa.value = data
+      DataSesa.value = data;
       sid__.value = data.eid;
       // bact.value = data.user.bact;
       store.commit("setSid", sid__.value);
@@ -364,21 +447,32 @@ export default defineComponent({
       }
     });
 
-    return {};
+    onMounted(() => {
+      GetMecanicoNombre();
+      GetMecanicoCorreo();
+      GetMecanicoTelefono();
+      GetMecanicoDireccion();
+    });
+
+    return {
+      modules: [Autoplay],
+      isOpenRef,
+      setOpen,
+      model_mecanico,
+    };
   },
 });
 </script>
 <style scoped>
 .style-j {
   position: absolute;
-  background: red;
+  background: #ff000000;
   width: 91%;
   top: 100%;
   margin: 0px 3% 0px 4%;
   height: 79px;
   font-family: sans-serif;
   border-radius: 10px 10px 10px 10px;
-  box-shadow: 1px 2px 10px -3px;
   transform: translate(0px, -250%);
 }
 </style>
