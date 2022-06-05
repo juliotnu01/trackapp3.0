@@ -11,7 +11,7 @@ export default {
         telefono: "",
         direccion: "",
       },
-      Storage:Storage,
+      Storage: Storage,
     };
   },
   computed: {
@@ -31,7 +31,7 @@ export default {
         this.StoreMecanicoCorreo(val);
       },
     },
-     var_computed_mecanico_telefono: {
+    var_computed_mecanico_telefono: {
       get() {
         return this.model_mecanico.telefono;
       },
@@ -48,11 +48,11 @@ export default {
       },
     },
   },
-  mounted(){
-      this.GetMecanicoNombre();
-      this.GetMecanicoCorreo();
-      this.GetMecanicoTelefono();
-      this.GetMecanicoDireccion();
+  mounted() {
+    this.GetMecanicoNombre();
+    this.GetMecanicoCorreo();
+    this.GetMecanicoTelefono();
+    this.GetMecanicoDireccion();
   },
   methods: {
     //   mecanico nombre
@@ -83,7 +83,7 @@ export default {
 
     // mecanico Telefono
 
-     async StoreMecanicoTelefono(data) {
+    async StoreMecanicoTelefono(data) {
       await this.Storage.set({
         key: "Data_mecanico_telefono",
         value: `${data}`,
@@ -97,7 +97,7 @@ export default {
 
     // mecanico direccion
 
-     async StoreMecanicoDireccion(data) {
+    async StoreMecanicoDireccion(data) {
       await this.Storage.set({
         key: "Data_mecanico_direccion",
         value: `${data}`,
@@ -105,11 +105,11 @@ export default {
     },
 
     async GetMecanicoDireccion() {
-      var { value } = await this.Storage.get({ key: "Data_mecanico_direccion" });
+      var { value } = await this.Storage.get({
+        key: "Data_mecanico_direccion",
+      });
       this.model_mecanico.direccion = value;
     },
-
-
   },
 };
 </script>

@@ -12,7 +12,13 @@
             Mecanico
           </ion-button>
         </swiper-slide>
-        <swiper-slide>Slide 2</swiper-slide>
+        <swiper-slide> <ion-button
+            expand="full"
+            style="width: 100%; height: 50px"
+            @click="setOpenGrua(true)"
+          >
+            Grua
+          </ion-button></swiper-slide>
         <swiper-slide>Slide 3</swiper-slide>
       </swiper>
 
@@ -57,6 +63,49 @@
           </ion-card>
         </ion-content>
       </ion-modal>
+
+       <ion-modal
+        :breakpoints="[0.1, 0.7, 1]"
+        :initialBreakpoint="0.7"
+        :is-open="isOpenRefGrua"
+        @didDismiss="setOpenGrua(false)"
+      >
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Prestador de Grua</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <ion-card>
+            <ion-card-header>
+              <ion-avatar>
+                <img
+                  src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+                />
+              </ion-avatar>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-item>
+                <ion-label position="floating">Nombre</ion-label>
+                <ion-input v-model="model_grua.nombre" disabled readonly></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Correo</ion-label>
+                <ion-input v-model="model_grua.correo" disabled readonly></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Numero de telefono</ion-label>
+                <ion-input v-model="model_grua.telefono" disabled readonly></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Dirección</ion-label>
+                <ion-input v-model="model_grua.direccion" disabled readonly></ion-input>
+              </ion-item>
+            </ion-card-content>
+          </ion-card>
+        </ion-content>
+      </ion-modal>
+
     </ion-content>
   </ion-page>
 </template>
@@ -130,8 +179,16 @@ export default defineComponent({
     const router: any = useRouter();
     const store: any = useStore();
     const isOpenRef = ref(false);
+    const isOpenRefGrua = ref(false);
 
     const model_mecanico: any = ref({
+      nombre: "",
+      correo: "",
+      telefono: "",
+      direccion: "",
+    });
+
+    const model_grua: any = ref({
       nombre: "",
       correo: "",
       telefono: "",
@@ -158,7 +215,34 @@ export default defineComponent({
       model_mecanico.value.direccion = value;
     };
 
+
+    const GetGruaNombre = async () => {
+      var { value } = await Storage.get({ key: "Data_grua_nombre" });
+      model_grua.value.nombre = value;
+    };
+
+    const GetGruaCorreo = async () => {
+      var { value } = await Storage.get({ key: "Data_grua_correo" });
+      model_grua.value.correo = value;
+    };
+
+    const GetGruaTelefono = async () => {
+      var { value } = await Storage.get({ key: "Data_grua_telefono" });
+      model_grua.value.telefono = value;
+    };
+
+    const GetGruaDireccion = async () => {
+      var { value } = await Storage.get({ key: "Data_grua_direccion" });
+      model_grua.value.direccion = value;
+    };
+
+
+
+
+
+
     const setOpen = (state: boolean) => (isOpenRef.value = state);
+    const setOpenGrua = (state: boolean) => (isOpenRefGrua.value = state);
 
     let token: any = computed({
       get: () => {
@@ -452,13 +536,21 @@ export default defineComponent({
       GetMecanicoCorreo();
       GetMecanicoTelefono();
       GetMecanicoDireccion();
+      GetGruaNombre();
+      GetGruaCorreo();
+      GetGruaTelefono();
+      GetGruaDireccion();
     });
 
     return {
       modules: [Autoplay],
       isOpenRef,
+      isOpenRefGrua,
       setOpen,
+      setOpenGrua,
       model_mecanico,
+      model_grua
+      
     };
   },
 });
