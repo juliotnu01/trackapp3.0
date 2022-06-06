@@ -66,9 +66,9 @@ export default {
       });
     },
 
-    async GetSeguroCorreo() {
+    async GetSeguroIdentificacion() {
       var { value } = await this.Storage.get({ key: "Data_seguro_identificacion" });
-      this.model_seguro.correo = value;
+      this.model_seguro.identificacion = value;
     },
 
     // seguro poliza
@@ -82,16 +82,7 @@ export default {
 
     async GetSeguroPoliza() {
       var { value } = await this.Storage.get({ key: "Data_seguro_poliza" });
-      this.model_seguro.telefono = value;
-    },
-
-    // mecanico direccion
-
-    async StoreSeguroDireccion(data) {
-      await this.Storage.set({
-        key: "Data_seguro_direccion",
-        value: `${data}`,
-      });
+      this.model_seguro.poliza = value;
     },
     
   },

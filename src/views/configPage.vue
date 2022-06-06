@@ -4,9 +4,7 @@
       <ion-card>
         <ion-card-header>
           <ion-avatar>
-            <img
-              src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-            />
+            <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
           </ion-avatar>
           <ion-card-title>Mecanico</ion-card-title>
           <ion-card-subtitle>Mecanico de confianza</ion-card-subtitle>
@@ -16,7 +14,7 @@
             <ion-label position="floating">Nombre</ion-label>
             <ion-input v-model="var_computed_mecanico_nombre"></ion-input>
           </ion-item>
-            <ion-item>
+          <ion-item>
             <ion-label position="floating">Correo</ion-label>
             <ion-input v-model="var_computed_mecanico_correo"></ion-input>
           </ion-item>
@@ -24,21 +22,17 @@
             <ion-label position="floating">Numero de telefono</ion-label>
             <ion-input v-model="var_computed_mecanico_telefono"></ion-input>
             <a href="tel:1-562-867-5309">Click to Call!</a>
-
           </ion-item>
-          
           <ion-item>
             <ion-label position="floating">Dirección</ion-label>
             <ion-input v-model="var_computed_mecanico_direccion"></ion-input>
           </ion-item>
         </ion-card-content>
       </ion-card>
-      <ion-card style="margin-bottom: 90px;">
+      <ion-card>
         <ion-card-header>
           <ion-avatar>
-            <img
-              src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-            />
+            <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
           </ion-avatar>
           <ion-card-title>Grua</ion-card-title>
           <ion-card-subtitle>Prestador de Grua</ion-card-subtitle>
@@ -48,7 +42,7 @@
             <ion-label position="floating">Nombre</ion-label>
             <ion-input v-model="var_computed_grua_nombre"></ion-input>
           </ion-item>
-            <ion-item>
+          <ion-item>
             <ion-label position="floating">Correo</ion-label>
             <ion-input v-model="var_computed_grua_correo"></ion-input>
           </ion-item>
@@ -61,6 +55,65 @@
             <ion-label position="floating">Dirección</ion-label>
             <ion-input v-model="var_computed_grua_direccion"></ion-input>
           </ion-item>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-header>
+          <ion-avatar>
+            <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
+          </ion-avatar>
+          <ion-card-title>Seguro</ion-card-title>
+          <ion-card-subtitle>Poliza de Seguro</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item>
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input v-model="var_computed_seguro_nombre"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Identificacion</ion-label>
+            <ion-input v-model="var_computed_seguro_identificacion"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Poliza</ion-label>
+            <ion-input v-model="var_computed_seguro_poliza"></ion-input>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+      <ion-card style="margin-bottom: 90px;">
+        <ion-card-header>
+          <ion-avatar>
+            <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
+          </ion-avatar>
+          <ion-card-title>Mantenimiento</ion-card-title>
+          <ion-card-subtitle>Mantenimientos realizados</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item>
+            <ion-label position="floating">Fecha</ion-label>
+            <ion-input v-model="model_mantenimiento.date"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Proximo Mantenimiento</ion-label>
+            <ion-input v-model="model_mantenimiento.proximo_mantenimiento"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Descripcion</ion-label>
+            <ion-textarea v-model="model_mantenimiento.descripcion" ></ion-textarea>
+          </ion-item>
+          <ion-button expand="full" style="margin-top: 10px" @click="StoreMantenimiento">Registrar Mantenimiento
+          </ion-button>
+          <ion-card-content>
+            <ion-list>
+              <ion-item v-for="(mantenimiento, m) in mantenimientos" :key="m">
+                <ion-label>
+                  Fecha de mantenimiento: {{mantenimiento.date}} <br/>
+                  Fecha de  proximo mantenimiento: {{mantenimiento.date}} <br/>
+                  Descripción: {{mantenimiento.descripcion}} <br/>
+                </ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
         </ion-card-content>
       </ion-card>
     </ion-content>
@@ -81,12 +134,17 @@ import {
   IonItem,
   IonLabel,
   IonInput,
+  IonTextarea,
+  IonButton,
+  IonList,
 } from "@ionic/vue";
 import mixinMecanico from "./mixing/MecanicoMixing.vue";
 import mixinGrua from "./mixing/GruaMixing.vue";
+import mixiSeguro from "./mixing/SeguroMixing.vue";
+import mixiMantenimiento from "./mixing/MantenimientoMixing.vue";
 
 export default {
-  mixins: [mixinMecanico, mixinGrua],
+  mixins: [mixinMecanico, mixinGrua, mixiSeguro, mixiMantenimiento],
   components: {
     IonPage,
     IonContent,
@@ -99,7 +157,9 @@ export default {
     IonItem,
     IonLabel,
     IonInput,
+    IonTextarea,
+    IonButton
   },
-  
+
 };
 </script>

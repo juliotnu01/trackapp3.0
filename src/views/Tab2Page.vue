@@ -4,30 +4,29 @@
       <div id="map" style="width: 100%; height: 100%; z-index: 1" />
       <swiper class="style-j" :autoplay="true">
         <swiper-slide>
-          <ion-button
-            expand="full"
-            style="width: 100%; height: 50px"
-            @click="setOpen(true)"
-          >
+          <ion-button expand="full" style="width: 100%; height: 50px" @click="setOpen(true)">
             Mecanico
           </ion-button>
         </swiper-slide>
-        <swiper-slide> <ion-button
-            expand="full"
-            style="width: 100%; height: 50px"
-            @click="setOpenGrua(true)"
-          >
+        <swiper-slide>
+          <ion-button expand="full" style="width: 100%; height: 50px" @click="setOpenGrua(true)">
             Grua
-          </ion-button></swiper-slide>
-        <swiper-slide>Slide 3</swiper-slide>
+          </ion-button>
+        </swiper-slide>
+        <swiper-slide>
+          <ion-button expand="full" style="width: 100%; height: 50px" @click="setOpenSeguro(true)">
+            Seguro
+          </ion-button>
+        </swiper-slide>
+        <swiper-slide>
+          <ion-button expand="full" style="width: 100%; height: 50px" @click="setOpenMantenimiento(true)">
+            Mantenimientos
+          </ion-button>
+        </swiper-slide>
       </swiper>
 
-      <ion-modal
-        :breakpoints="[0.1, 0.7, 1]"
-        :initialBreakpoint="0.7"
-        :is-open="isOpenRef"
-        @didDismiss="setOpen(false)"
-      >
+      <ion-modal :breakpoints="[0.1, 0.7, 1]" :initialBreakpoint="0.7" :is-open="isOpenRef"
+        @didDismiss="setOpen(false)">
         <ion-header>
           <ion-toolbar>
             <ion-title>Mecanico de Confianza</ion-title>
@@ -37,9 +36,7 @@
           <ion-card>
             <ion-card-header>
               <ion-avatar>
-                <img
-                  src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-                />
+                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
               </ion-avatar>
             </ion-card-header>
             <ion-card-content>
@@ -64,12 +61,8 @@
         </ion-content>
       </ion-modal>
 
-       <ion-modal
-        :breakpoints="[0.1, 0.7, 1]"
-        :initialBreakpoint="0.7"
-        :is-open="isOpenRefGrua"
-        @didDismiss="setOpenGrua(false)"
-      >
+      <ion-modal :breakpoints="[0.1, 0.7, 1]" :initialBreakpoint="0.7" :is-open="isOpenRefGrua"
+        @didDismiss="setOpenGrua(false)">
         <ion-header>
           <ion-toolbar>
             <ion-title>Prestador de Grua</ion-title>
@@ -79,9 +72,7 @@
           <ion-card>
             <ion-card-header>
               <ion-avatar>
-                <img
-                  src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-                />
+                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
               </ion-avatar>
             </ion-card-header>
             <ion-card-content>
@@ -101,6 +92,67 @@
                 <ion-label position="floating">Dirección</ion-label>
                 <ion-input v-model="model_grua.direccion" disabled readonly></ion-input>
               </ion-item>
+            </ion-card-content>
+          </ion-card>
+        </ion-content>
+      </ion-modal>
+
+      <ion-modal :breakpoints="[0.1, 0.7, 1]" :initialBreakpoint="0.7" :is-open="isOpenRefSeguro"
+        @didDismiss="setOpenSeguro(false)">
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Poliza de Seguro</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <ion-card>
+            <ion-card-header>
+              <ion-avatar>
+                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
+              </ion-avatar>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-item>
+                <ion-label position="floating">Nombre</ion-label>
+                <ion-input v-model="model_seguro.nombre" disabled readonly></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Identificacion</ion-label>
+                <ion-input v-model="model_seguro.identificacion" disabled readonly></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Poliza</ion-label>
+                <ion-input v-model="model_seguro.poliza" disabled readonly></ion-input>
+              </ion-item>
+            </ion-card-content>
+          </ion-card>
+        </ion-content>
+      </ion-modal>
+
+      <ion-modal :breakpoints="[0.1, 0.7, 1]" :initialBreakpoint="0.7" :is-open="isOpenRefMantenimiento"
+        @didDismiss="setOpenMantenimiento(false)">
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Mantenimientos</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <ion-card>
+            <ion-card-header>
+              <ion-avatar>
+                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
+              </ion-avatar>
+            </ion-card-header>
+            <ion-card-content>
+             <ion-list>
+              <ion-item v-for="(mantenimiento, m) in mantenimientos" :key="m">
+                <ion-label>
+                  Fecha de mantenimiento: {{mantenimiento.date}} <br/>
+                  Fecha de  proximo mantenimiento: {{mantenimiento.date}} <br/>
+                  Descripción: {{mantenimiento.descripcion}} <br/>
+                </ion-label>
+              </ion-item>
+            </ion-list>
             </ion-card-content>
           </ion-card>
         </ion-content>
@@ -130,6 +182,7 @@ import {
   IonButton,
   IonModal,
   IonInput,
+  IonList
 } from "@ionic/vue";
 import { defineComponent, ref, computed, onMounted } from "vue";
 import { useRouter } from "vue-router";
@@ -170,6 +223,7 @@ export default defineComponent({
     IonButton,
     IonModal,
     IonInput,
+    IonList
   },
   setup() {
     const map__: any = ref({});
@@ -180,6 +234,9 @@ export default defineComponent({
     const store: any = useStore();
     const isOpenRef = ref(false);
     const isOpenRefGrua = ref(false);
+    const isOpenRefSeguro = ref(false);
+    const isOpenRefMantenimiento = ref(false);
+    const mantenimientos = ref([]);
 
     const model_mecanico: any = ref({
       nombre: "",
@@ -194,6 +251,29 @@ export default defineComponent({
       telefono: "",
       direccion: "",
     });
+
+    const model_seguro: any = ref({
+      nombre: "",
+      identificacion: "",
+      poliza: "",
+    });
+
+
+    const GetSeguroNombre = async () => {
+      var { value } = await Storage.get({ key: "Data_seguro_nombre" });
+      model_seguro.nombre = value;
+    };
+
+    const GetSeguroIdentificacion = async () => {
+      var { value } = await Storage.get({ key: "Data_seguro_identificacion" });
+      model_seguro.identificacion = value;
+    };
+
+    const GetSeguroPoliza = async () => {
+      var { value } = await Storage.get({ key: "Data_seguro_poliza" });
+      model_seguro.poliza = value;
+    };
+
 
     const GetMecanicoNombre = async () => {
       var { value } = await Storage.get({ key: "Data_mecanico_nombre" });
@@ -236,6 +316,13 @@ export default defineComponent({
       model_grua.value.direccion = value;
     };
 
+    const GetMantenimientosRealizados = async () => {
+      var  { value }  = await Storage.get({ key: "Data_mantenimientos" });
+      
+      console.log(value)
+      mantenimientos.value = JSON.parse(value || '{}')
+    };
+
 
 
 
@@ -243,6 +330,8 @@ export default defineComponent({
 
     const setOpen = (state: boolean) => (isOpenRef.value = state);
     const setOpenGrua = (state: boolean) => (isOpenRefGrua.value = state);
+    const setOpenSeguro = (state: boolean) => (isOpenRefSeguro.value = state);
+    const setOpenMantenimiento = (state: boolean) => (isOpenRefMantenimiento.value = state);
 
     let token: any = computed({
       get: () => {
@@ -540,6 +629,10 @@ export default defineComponent({
       GetGruaCorreo();
       GetGruaTelefono();
       GetGruaDireccion();
+      GetSeguroNombre();
+      GetSeguroIdentificacion();
+      GetSeguroPoliza();
+      GetMantenimientosRealizados();
     });
 
     return {
@@ -549,8 +642,14 @@ export default defineComponent({
       setOpen,
       setOpenGrua,
       model_mecanico,
-      model_grua
-      
+      model_grua,
+      model_seguro,
+      setOpenSeguro,
+      isOpenRefSeguro,
+      mantenimientos,
+      setOpenMantenimiento,
+      isOpenRefMantenimiento
+
     };
   },
 });
