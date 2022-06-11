@@ -5,6 +5,10 @@ import LoginPage from '../views/loginPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
+    path: '/guest',
+    component: () => import('@/views/guestview.vue')
+  },
+  {
     path: '/',
     redirect: '/login'
   },
