@@ -6,9 +6,9 @@
                     <div class="slide">
                         <div class="g-background" />
                         <ion-avatar class="logo-s">
-                            <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
+                            <img src="/img/Logo blanco.png" />
                         </ion-avatar>
-                        <img :src="imgCamion" class="img-s" />
+                        <img src="/img/Foto ingreso camion.jpg" class="img-s" />
                         <p>
                             Seguimiento integral de float de vehiculos y float de transportes.
                         </p>
@@ -17,30 +17,39 @@
 
                     </div>
                 </ion-slide>
+
                 <ion-slide>
                     <div class="slide">
                         <div class="g-background" />
-                        <img :src="imgCamion" class="img-s" />
+                        <ion-avatar class="logo-s">
+                            <img src="/img/Logo blanco.png" />
+                        </ion-avatar>
+                        <img src="/img/Foto ingreso mascota.jpg" class="img-s" />
                         <p>
-                            Seguimiento integral de float de vehiculos y float de transportes.
+                            Encuentra tu mascota fácil y nunca la pierdas de vista
                         </p>
                         <ion-button fill="clear" class="btn-inicio"> Inicio
                         </ion-button>
 
                     </div>
                 </ion-slide>
+
                 <ion-slide>
                     <div class="slide">
                         <div class="g-background" />
-                        <img :src="imgCamion" class="img-s" />
+                        <ion-avatar class="logo-s">
+                            <img src="/img/Logo blanco.png" />
+                        </ion-avatar>
+                        <img src="/img/Foto ingreso adulto mayor.jpg" class="img-s" />
                         <p>
-                            Seguimiento integral de float de vehiculos y float de transportes.
+                            A veces los adultos pueden perderse... no lo permitas con sesa
                         </p>
                         <ion-button fill="clear" class="btn-inicio"> Inicio
                         </ion-button>
 
                     </div>
                 </ion-slide>
+            
 
             </ion-slides>
         </ion-content>
@@ -63,7 +72,8 @@ import { defineComponent } from "vue";
 // import axios from "axios";
 // import { useStore } from 'vuex'
 
-import fotoCamion from '../../public/img/Foto ingreso camion.jpg';
+// import fotoCamion from '/img/Foto ingreso camion.jpg';
+// import logoSesa from '/img/Logo blanco.png';
 
 
 export default defineComponent({
@@ -77,9 +87,11 @@ export default defineComponent({
         IonAvatar,
     },
     setup() {
-        const imgCamion: any = fotoCamion;
+        // const imgCamion: any = fotoCamion;
+        // const lSesa: any = logoSesa;
         return {
-            imgCamion
+            // imgCamion,
+            // lSesa
         }
     }
 })
@@ -97,12 +109,6 @@ ion-slides {
     margin-top: 2.8rem;
 }
 
-/* .swiper-slide img {
-    max-height: 50%;
-    max-width: 80%;
-    margin: 60px 0 40px;
-    pointer-events: none;
-} */
 
 b {
     font-weight: 500;
