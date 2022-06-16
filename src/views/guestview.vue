@@ -5,52 +5,42 @@
                 <ion-slide>
                     <div class="slide">
                         <div class="g-background" />
-                        <ion-avatar class="logo-s">
-                            <img src="/img/Logo blanco.png" />
-                        </ion-avatar>
+                        <img src="/img/Logo blanco.png" class="logo-s" />
                         <img src="/img/Foto ingreso camion.jpg" class="img-s" />
                         <p>
                             Seguimiento integral de float de vehiculos y float de transportes.
                         </p>
-                        <ion-button fill="clear" class="btn-inicio"> Inicio
+                        <ion-button fill="clear" class="btn-inicio"  href="/login"> Inicio
                         </ion-button>
 
                     </div>
                 </ion-slide>
-
                 <ion-slide>
                     <div class="slide">
                         <div class="g-background" />
-                        <ion-avatar class="logo-s">
-                            <img src="/img/Logo blanco.png" />
-                        </ion-avatar>
+                        <img src="/img/Logo blanco.png" class="logo-s" />
                         <img src="/img/Foto ingreso mascota.jpg" class="img-s" />
                         <p>
                             Encuentra tu mascota fácil y nunca la pierdas de vista
                         </p>
-                        <ion-button fill="clear" class="btn-inicio"> Inicio
+                        <ion-button fill="clear" class="btn-inicio" href="/login"> Inicio
                         </ion-button>
 
                     </div>
                 </ion-slide>
-
                 <ion-slide>
                     <div class="slide">
                         <div class="g-background" />
-                        <ion-avatar class="logo-s">
-                            <img src="/img/Logo blanco.png" />
-                        </ion-avatar>
+                        <img src="/img/Logo blanco.png" class="logo-s" />
                         <img src="/img/Foto ingreso adulto mayor.jpg" class="img-s" />
                         <p>
                             A veces los adultos pueden perderse... no lo permitas con sesa
                         </p>
-                        <ion-button fill="clear" class="btn-inicio"> Inicio
+                        <ion-button fill="clear" class="btn-inicio" href="/login"> Inicio
                         </ion-button>
 
                     </div>
                 </ion-slide>
-            
-
             </ion-slides>
         </ion-content>
     </ion-page>
@@ -87,11 +77,7 @@ export default defineComponent({
         IonAvatar,
     },
     setup() {
-        // const imgCamion: any = fotoCamion;
-        // const lSesa: any = logoSesa;
         return {
-            // imgCamion,
-            // lSesa
         }
     }
 })
@@ -164,10 +150,12 @@ p b {
     text-align: center;
     transform: translate(-50%, 0px);
 }
-.logo-s{
+
+.logo-s {
     position: absolute;
-    transform: translate(-50%, -200%);
+    transform: translate(-50%, -130%);
     left: 50%;
     top: 50%;
+    width: 200px;
 }
 </style>

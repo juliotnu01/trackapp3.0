@@ -1,34 +1,29 @@
 <template>
     <ion-page>
-        <ion-header>
-            <ion-toolbar>
-                <ion-title>Login</ion-title>
-            </ion-toolbar>
-        </ion-header>
         <ion-content :fullscreen="true">
-            <section class="flex flex-col md:flex-row h-screen items-center">
-                <div class="bg-indigo-600 hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
-                    <img src="https://source.unsplash.com/random" alt="" class="w-full h-full object-cover">
-                </div>
-                <div class="bg-white w-full md:max-w-md lg:max-w-full md:mx-auto md:mx-0 md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12 flex items-center justify-center">
-                    <div class="w-full h-100">
-                         <div class="mt-6">
-                            <div>
-                                <label class="block text-gray-700">TOKEN DE SEGURIDAD</label>
-                                <input v-model="TOKEN" type="text" id="" placeholder="Ingrese token de seguridad" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus >
-                            </div>
-                            <button type="button" class="w-full block bg-indigo-500 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg px-4 py-3 mt-6" @click="StoreAndLoginToken">
-                                Entrar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <div class="g-background" />
+            <img src="/img/Logo blanco.png" class="l-login" />
+            <ion-item class="itemToken">
+                <ion-label position="floating">TOKEN DE SEGURIDAD</ion-label>
+                <ion-input v-model="TOKEN" @change="StoreAndLoginToken" />
+            </ion-item>
+            <ion-button fill="clear" class="btn-inicio">
+                ¿Olvido su contraseña? <br />recuperar aqui.
+            </ion-button>
+
         </ion-content>
     </ion-page>
 </template>
 <script lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, onIonViewDidEnter } from '@ionic/vue';
+import {
+    IonPage,
+    IonContent,
+    IonLabel,
+    IonItem,
+    IonInput,
+    IonButton,
+    onIonViewDidEnter
+} from '@ionic/vue';
 import { Storage } from '@capacitor/storage';
 import { defineComponent, ref } from "vue";
 import { useRouter } from "vue-router";
@@ -37,7 +32,14 @@ import { useStore } from 'vuex'
 
 
 export default defineComponent({
-    components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
+    components: {
+        IonContent,
+        IonPage,
+        IonLabel,
+        IonItem,
+        IonInput,
+        IonButton
+    },
     setup() {
         const router = useRouter();
         const TOKEN: any = ref()
@@ -48,13 +50,13 @@ export default defineComponent({
                 key: 'TOKEN',
                 value: `${TOKEN.value}`,
             });
-            router.push('/tabs/tab2');
+            router.push('/choise-type-page');
         };
 
         const StoreAndLoginToken: any = async () => {
-            try{
-            redirecMap()
-            }catch(e){
+            try {
+                redirecMap()
+            } catch (e) {
                 console.log(e)
             }
         }
@@ -62,7 +64,7 @@ export default defineComponent({
             const { value } = await Storage.get({ key: 'TOKEN' });
             if(value){
                 store.commit('setTOKEN', value)
-                router.push('/tabs/tab2')
+                router.push('/choise-type-page')
             }
         })
         return {
@@ -72,3 +74,41 @@ export default defineComponent({
     }
 })
 </script>
+<style scoped>
+.g-background {
+    background: linear-gradient(180deg, rgba(116, 207, 139, 0.6643032212885154) 10%, rgba(32, 140, 255, 0.6643032212885154) 90%);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+
+}
+
+.itemToken {
+    position: absolute;
+    top: 10px;
+    width: 90%;
+    left: 50%;
+    transform: translate(-50%, 600%);
+    border-radius: 20px;
+    box-shadow: -1px 2px 5px 0px;
+}
+
+.l-login {
+    position: absolute;
+    width: 200px;
+    left: 50%;
+    transform: translate(-50%, 40%);
+}
+
+.btn-inicio {
+    position: absolute;
+    bottom: 30px;
+    color: white;
+    text-align: center;
+    transform: translate(-50%, 0px);
+    left: 50%;
+    text-transform: initial;
+}
+</style>

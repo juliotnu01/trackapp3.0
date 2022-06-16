@@ -1,5 +1,13 @@
 <template>
   <ion-page>
+    <ion-header :translucent="true">
+      <ion-toolbar>
+        <ion-buttons slot="end">
+          <ion-menu-button ></ion-menu-button>
+        </ion-buttons>
+        <ion-title > TE LLEVO DRIVER</ion-title>
+      </ion-toolbar>
+    </ion-header>
     <ion-content :fullscreen="true">
       <div id="map" style="width: 100%; height: 100%; z-index: 1" />
       <swiper class="style-j" :autoplay="true">
@@ -144,15 +152,15 @@
               </ion-avatar>
             </ion-card-header>
             <ion-card-content>
-             <ion-list>
-              <ion-item v-for="(mantenimiento, m) in mantenimientos" :key="m">
-                <ion-label>
-                  Fecha de mantenimiento: {{mantenimiento.date}} <br/>
-                  Fecha de  proximo mantenimiento: {{mantenimiento.date}} <br/>
-                  Descripción: {{mantenimiento.descripcion}} <br/>
-                </ion-label>
-              </ion-item>
-            </ion-list>
+              <ion-list>
+                <ion-item v-for="(mantenimiento, m) in mantenimientos" :key="m">
+                  <ion-label>
+                    Fecha de mantenimiento: {{ mantenimiento.date }} <br />
+                    Fecha de proximo mantenimiento: {{ mantenimiento.date }} <br />
+                    Descripción: {{ mantenimiento.descripcion }} <br />
+                  </ion-label>
+                </ion-item>
+              </ion-list>
             </ion-card-content>
           </ion-card>
         </ion-content>
@@ -182,7 +190,9 @@ import {
   IonButton,
   IonModal,
   IonInput,
-  IonList
+  IonList,
+  IonButtons,
+  IonMenuButton
 } from "@ionic/vue";
 import { defineComponent, ref, computed, onMounted } from "vue";
 import { useRouter } from "vue-router";
@@ -223,7 +233,9 @@ export default defineComponent({
     IonButton,
     IonModal,
     IonInput,
-    IonList
+    IonList,
+    IonButtons,
+    IonMenuButton
   },
   setup() {
     const map__: any = ref({});
@@ -317,8 +329,8 @@ export default defineComponent({
     };
 
     const GetMantenimientosRealizados = async () => {
-      var  { value }  = await Storage.get({ key: "Data_mantenimientos" });
-      
+      var { value } = await Storage.get({ key: "Data_mantenimientos" });
+
       console.log(value)
       mantenimientos.value = JSON.parse(value || '{}')
     };

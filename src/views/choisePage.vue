@@ -1,30 +1,30 @@
 <template>
     <ion-page>
-        <ion-header>
+        <!-- <ion-header>
             <ion-toolbar>
                 <ion-title>Seleccionar tipo de unidad</ion-title>
             </ion-toolbar>
-        </ion-header>
+        </ion-header> -->
         <ion-content :fullscreen="true">
+              <div class="g-background" />
             <div class="contenedor_btns">
                 <div class="container-buttoms">
                     <div class="item-container-buttom">
                         <ion-button class="personal-ion-btn" size="large" @click="goToViewMap(2)">
-                            <img src="https://img.icons8.com/external-filled-outline-geotatah/150/000000/external-pet-pet-lover-society-filled-outline-filled-outline-geotatah-20.png" />
-                        </ion-button>
-                    </div>
-                    <div class="item-container-buttom">
-                        <ion-button class="personal-ion-btn" size="large" @click="goToViewMap(1)">
-                            <img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/150/000000/external-cars-automotive-ecommerce-flaticons-lineal-color-flat-icons-2.png" />
+                            <img
+                                src="https://img.icons8.com/external-filled-outline-geotatah/150/000000/external-pet-pet-lover-society-filled-outline-filled-outline-geotatah-20.png" />
                         </ion-button>
                     </div>
                 </div>
                 <div class="container-buttoms">
                     <div class="item-container-buttom">
-                        <ion-button class="personal-ion-btn" size="large" @click="goToViewMap(3)">
-                            <img src="https://img.icons8.com/external-color-outline-adri-ansyah/150/000000/external-olympics-olympic-games-color-outline-adri-ansyah-59.png"/>
+                        <ion-button class="personal-ion-btn" size="large" @click="goToViewMap(1)">
+                            <img
+                                src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/150/000000/external-cars-automotive-ecommerce-flaticons-lineal-color-flat-icons-2.png" />
                         </ion-button>
                     </div>
+                </div>
+                <div class="container-buttoms">
                     <div class="item-container-buttom">
                         <ion-button class="personal-ion-btn" size="large" @click="goToViewMap(4)">
                             <img src="https://img.icons8.com/fluency/150/000000/search-client.png" />
@@ -38,9 +38,6 @@
 <script lang="ts">
 import {
     IonPage,
-    IonHeader,
-    IonToolbar,
-    IonTitle,
     IonContent,
     IonButton
     // onIonViewDidEnter 
@@ -56,7 +53,7 @@ import { useRouter } from "vue-router";
 
 
 export default defineComponent({
-    components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButton },
+    components: {IonContent, IonPage, IonButton },
 
     setup() {
         const router = useRouter()
@@ -79,10 +76,13 @@ export default defineComponent({
 }
 
 .contenedor_btns {
-    width: 100%;
+        width: 100%;
     height: 50vh;
     display: grid;
     align-content: stretch;
+    position: relative;
+    top: 50%;
+    transform: translate(0px, -90%);
 }
 
 .container-buttoms {
@@ -101,5 +101,14 @@ export default defineComponent({
     width: 180px;
     height: 200px;
     --background: none;
+}
+.g-background {
+    background: linear-gradient(180deg, rgba(116, 207, 139, 0.6643032212885154) 10%, rgba(32, 140, 255, 0.6643032212885154) 90%);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+
 }
 </style>
