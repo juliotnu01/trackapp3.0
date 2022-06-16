@@ -50,7 +50,7 @@ export default defineComponent({
                 key: 'TOKEN',
                 value: `${TOKEN.value}`,
             });
-            router.push('/choise-type-page');
+            router.push('/tabs/tab2');
         };
 
         const StoreAndLoginToken: any = async () => {
@@ -64,7 +64,7 @@ export default defineComponent({
             const { value } = await Storage.get({ key: 'TOKEN' });
             if(value){
                 store.commit('setTOKEN', value)
-                router.push('/choise-type-page')
+                router.push('/tabs/tab2')
             }
         })
         return {
