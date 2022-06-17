@@ -2,114 +2,273 @@
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar class="t-toolbar">
-        <ion-button fill="clear" @click="openFirst">
-          <img src="https://img.icons8.com/material-sharp/24/undefined/menu--v1.png" />
-        </ion-button>
-        <ion-item style="position: absolute; top: 5px; left: 39px; width: 80%;">
-          <ion-label style="width: 10px; margin-left: 20px;">Vehiculo</ion-label>
-          <ion-select interface="popover" style="position: relative; min-width: 70%">
-            <ion-select-option value="nes">NES asdasdasdasdasdasd</ion-select-option>
-            <ion-select-option value="n64">Nintendo64</ion-select-option>
-            <ion-select-option value="ps">PlayStation</ion-select-option>
-            <ion-select-option value="genesis">Sega Genesis</ion-select-option>
-            <ion-select-option value="saturn">Sega Saturn</ion-select-option>
-            <ion-select-option value="snes">SNES</ion-select-option>
-          </ion-select>
-        </ion-item>
+        <ion-buttons slot="start">
+          <ion-menu-button auto-hide="false"></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+          <ion-item>
+            <ion-label style="width: 25%; position: absolute">Vehiculo</ion-label>
+            <ion-select interface="popover" style="position: absolute; right: 9px; min-width: 72%" v-model="UnidadSelected" @ionChange="SetUniViewMap(UnidadSelected)" >
+              <ion-select-option :value="unidad" v-for="(unidad, u) in unidades__" :key="u">{{ unidad.d.nm }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-title>
       </ion-toolbar>
     </ion-header>
-      <ion-menu side="start" menu-id="first" content-id="main">
-        <ion-header>
-          <ion-toolbar color="primary">
-            <ion-title>Start Menu</ion-title>
-          </ion-toolbar>
-        </ion-header>
-        <ion-content>
-          <ion-list>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-          </ion-list>
-        </ion-content>
-      </ion-menu>
+    <ion-menu side="start" menu-id="first" content-id="main" class="menu-j">
+      <ion-content>
+        <div class="content-j">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-button
+                  fill="clear"
+                  side="end"
+                  style="
+                    text-align: center;
+                    font-size: 10px;
+                    text-transform: capitalize;
+                    height: 50px;
+                    text-decoration: none;
+                    color: white;
+                  "
+                >
+                  <div>
+                    <div>
+                      <img
+                        src="https://img.icons8.com/ios/20/undefined/shield.png"
+                        style="
+                          position: relative;
+                          left: 50%;
+                          transform: translate(-50%, -5px);
+                        "
+                      />
+                    </div>
+                    <div>
+                      <p>Parqueo <br />Seguro</p>
+                    </div>
+                  </div>
+                </ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button
+                  fill="clear"
+                  side="end"
+                  style="
+                    text-align: center;
+                    font-size: 10px;
+                    text-transform: capitalize;
+                    height: 50px;
+                    text-decoration: none;
+                    color: white;
+                  "
+                >
+                  <div>
+                    <div>
+                      <img
+                        src="https://img.icons8.com/ios/20/undefined/shield.png"
+                        style="
+                          position: relative;
+                          left: 50%;
+                          transform: translate(-50%, -5px);
+                        "
+                      />
+                    </div>
+                    <div>
+                      <p>Aperturas de <br />Puertas</p>
+                    </div>
+                  </div>
+                </ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button
+                  fill="clear"
+                  side="end"
+                  style="
+                    text-align: center;
+                    font-size: 10px;
+                    text-transform: capitalize;
+                    height: 50px;
+                    text-decoration: none;
+                    color: white;
+                  "
+                >
+                  <div>
+                    <div>
+                      <img
+                        src="https://img.icons8.com/ios/20/undefined/shield.png"
+                        style="
+                          position: relative;
+                          left: 50%;
+                          transform: translate(-50%, -5px);
+                        "
+                      />
+                    </div>
+                    <div>
+                      <p>Bloquear <br />Motor</p>
+                    </div>
+                  </div>
+                </ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button
+                  fill="clear"
+                  side="end"
+                  style="
+                    text-align: center;
+                    font-size: 10px;
+                    text-transform: capitalize;
+                    height: 50px;
+                    text-decoration: none;
+                    color: white;
+                  "
+                >
+                  <div>
+                    <div>
+                      <img
+                        src="https://img.icons8.com/ios/20/undefined/shield.png"
+                        style="
+                          position: relative;
+                          left: 50%;
+                          transform: translate(-50%, -5px);
+                        "
+                      />
+                    </div>
+                    <div><p>SOS</p></div>
+                  </div>
+                </ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button
+                  fill="clear"
+                  side="end"
+                  style="
+                    text-align: center;
+                    font-size: 10px;
+                    text-transform: capitalize;
+                    height: 50px;
+                    text-decoration: none;
+                    color: white;
+                  "
+                  @click="setOpen(true)"
+                >
+                  <div>
+                    <div>
+                      <img
+                        src="https://img.icons8.com/ios/20/undefined/shield.png"
+                        style="
+                          position: relative;
+                          left: 50%;
+                          transform: translate(-50%, -5px);
+                        "
+                      />
+                    </div>
+                    <div><p>Mecanico</p></div>
+                  </div>
+                </ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button
+                  fill="clear"
+                  side="end"
+                  style="
+                    text-align: center;
+                    font-size: 10px;
+                    text-transform: capitalize;
+                    height: 50px;
+                    text-decoration: none;
+                    color: white;
+                  "
+                  @click="setOpenGrua(true)"
+                >
+                  <div>
+                    <div>
+                      <img
+                        src="https://img.icons8.com/ios/20/undefined/shield.png"
+                        style="
+                          position: relative;
+                          left: 50%;
+                          transform: translate(-50%, -5px);
+                        "
+                      />
+                    </div>
+                    <div><p>Grua</p></div>
+                  </div>
+                </ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button
+                  fill="clear"
+                  side="end"
+                  style="
+                    text-align: center;
+                    font-size: 10px;
+                    text-transform: capitalize;
+                    height: 50px;
+                    text-decoration: none;
+                    color: white;
+                  "
+                  @click="setOpenSeguro(true)"
+                >
+                  <div>
+                    <div>
+                      <img
+                        src="https://img.icons8.com/ios/20/undefined/shield.png"
+                        style="
+                          position: relative;
+                          left: 50%;
+                          transform: translate(-50%, -5px);
+                        "
+                        @click="setOpenSeguro(true)"
+                      />
+                    </div>
+                    <div><p>Seguro</p></div>
+                  </div>
+                </ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button
+                  fill="clear"
+                  side="end"
+                  style="
+                    text-align: center;
+                    font-size: 10px;
+                    text-transform: capitalize;
+                    height: 50px;
+                    text-decoration: none;
+                    color: white;
+                  "
+                  @click="setOpenMantenimiento(true)"
+                >
+                  <div>
+                    <div>
+                      <img
+                        src="https://img.icons8.com/ios/20/undefined/shield.png"
+                        style="
+                          position: relative;
+                          left: 50%;
+                          transform: translate(-50%, -5px);
+                        "
+                      />
+                    </div>
+                    <div><p>Mantenimientos</p></div>
+                  </div>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+            <div class="divider-j"></div>
+          </ion-grid>
+        </div>
+      </ion-content>
+    </ion-menu>
     <ion-content :fullscreen="true" id="main">
       <div id="map" style="width: 100%; height: 100%; z-index: 1" />
-
-
-
-
-      <swiper class="style-j" :autoplay="true">
-        <swiper-slide>
-          <ion-button expand="full" style="width: 100%; height: 50px" @click="setOpen(true)">
-            Mecanico
-          </ion-button>
-        </swiper-slide>
-        <swiper-slide>
-          <ion-button expand="full" style="width: 100%; height: 50px" @click="setOpenGrua(true)">
-            Grua
-          </ion-button>
-        </swiper-slide>
-        <swiper-slide>
-          <ion-button expand="full" style="width: 100%; height: 50px" @click="setOpenSeguro(true)">
-            Seguro
-          </ion-button>
-        </swiper-slide>
-        <swiper-slide>
-          <ion-button expand="full" style="width: 100%; height: 50px" @click="setOpenMantenimiento(true)">
-            Mantenimientos
-          </ion-button>
-        </swiper-slide>
-      </swiper>
-
-      <ion-modal :breakpoints="[0.1, 0.7, 1]" :initialBreakpoint="0.7" :is-open="isOpenRef"
-        @didDismiss="setOpen(false)">
+      <ion-modal
+        :breakpoints="[0.1, 0.7, 1]"
+        :initialBreakpoint="0.7"
+        :is-open="isOpenRef"
+        @didDismiss="setOpen(false)"
+      >
         <ion-header>
           <ion-toolbar>
             <ion-title>Mecanico de Confianza</ion-title>
@@ -119,33 +278,55 @@
           <ion-card>
             <ion-card-header>
               <ion-avatar>
-                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
+                <img
+                  src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+                />
               </ion-avatar>
             </ion-card-header>
             <ion-card-content>
               <ion-item>
                 <ion-label position="floating">Nombre</ion-label>
-                <ion-input v-model="model_mecanico.nombre" disabled readonly></ion-input>
+                <ion-input
+                  v-model="model_mecanico.nombre"
+                  disabled
+                  readonly
+                ></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label position="floating">Correo</ion-label>
-                <ion-input v-model="model_mecanico.correo" disabled readonly></ion-input>
+                <ion-input
+                  v-model="model_mecanico.correo"
+                  disabled
+                  readonly
+                ></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label position="floating">Numero de telefono</ion-label>
-                <ion-input v-model="model_mecanico.telefono" disabled readonly></ion-input>
+                <ion-input
+                  v-model="model_mecanico.telefono"
+                  disabled
+                  readonly
+                ></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label position="floating">Dirección</ion-label>
-                <ion-input v-model="model_mecanico.direccion" disabled readonly></ion-input>
+                <ion-input
+                  v-model="model_mecanico.direccion"
+                  disabled
+                  readonly
+                ></ion-input>
               </ion-item>
             </ion-card-content>
           </ion-card>
         </ion-content>
       </ion-modal>
 
-      <ion-modal :breakpoints="[0.1, 0.7, 1]" :initialBreakpoint="0.7" :is-open="isOpenRefGrua"
-        @didDismiss="setOpenGrua(false)">
+      <ion-modal
+        :breakpoints="[0.1, 0.7, 1]"
+        :initialBreakpoint="0.7"
+        :is-open="isOpenRefGrua"
+        @didDismiss="setOpenGrua(false)"
+      >
         <ion-header>
           <ion-toolbar>
             <ion-title>Prestador de Grua</ion-title>
@@ -155,33 +336,55 @@
           <ion-card>
             <ion-card-header>
               <ion-avatar>
-                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
+                <img
+                  src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+                />
               </ion-avatar>
             </ion-card-header>
             <ion-card-content>
               <ion-item>
                 <ion-label position="floating">Nombre</ion-label>
-                <ion-input v-model="model_grua.nombre" disabled readonly></ion-input>
+                <ion-input
+                  v-model="model_grua.nombre"
+                  disabled
+                  readonly
+                ></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label position="floating">Correo</ion-label>
-                <ion-input v-model="model_grua.correo" disabled readonly></ion-input>
+                <ion-input
+                  v-model="model_grua.correo"
+                  disabled
+                  readonly
+                ></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label position="floating">Numero de telefono</ion-label>
-                <ion-input v-model="model_grua.telefono" disabled readonly></ion-input>
+                <ion-input
+                  v-model="model_grua.telefono"
+                  disabled
+                  readonly
+                ></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label position="floating">Dirección</ion-label>
-                <ion-input v-model="model_grua.direccion" disabled readonly></ion-input>
+                <ion-input
+                  v-model="model_grua.direccion"
+                  disabled
+                  readonly
+                ></ion-input>
               </ion-item>
             </ion-card-content>
           </ion-card>
         </ion-content>
       </ion-modal>
 
-      <ion-modal :breakpoints="[0.1, 0.7, 1]" :initialBreakpoint="0.7" :is-open="isOpenRefSeguro"
-        @didDismiss="setOpenSeguro(false)">
+      <ion-modal
+        :breakpoints="[0.1, 0.7, 1]"
+        :initialBreakpoint="0.7"
+        :is-open="isOpenRefSeguro"
+        @didDismiss="setOpenSeguro(false)"
+      >
         <ion-header>
           <ion-toolbar>
             <ion-title>Poliza de Seguro</ion-title>
@@ -191,29 +394,47 @@
           <ion-card>
             <ion-card-header>
               <ion-avatar>
-                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
+                <img
+                  src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+                />
               </ion-avatar>
             </ion-card-header>
             <ion-card-content>
               <ion-item>
                 <ion-label position="floating">Nombre</ion-label>
-                <ion-input v-model="model_seguro.nombre" disabled readonly></ion-input>
+                <ion-input
+                  v-model="model_seguro.nombre"
+                  disabled
+                  readonly
+                ></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label position="floating">Identificacion</ion-label>
-                <ion-input v-model="model_seguro.identificacion" disabled readonly></ion-input>
+                <ion-input
+                  v-model="model_seguro.identificacion"
+                  disabled
+                  readonly
+                ></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label position="floating">Poliza</ion-label>
-                <ion-input v-model="model_seguro.poliza" disabled readonly></ion-input>
+                <ion-input
+                  v-model="model_seguro.poliza"
+                  disabled
+                  readonly
+                ></ion-input>
               </ion-item>
             </ion-card-content>
           </ion-card>
         </ion-content>
       </ion-modal>
 
-      <ion-modal :breakpoints="[0.1, 0.7, 1]" :initialBreakpoint="0.7" :is-open="isOpenRefMantenimiento"
-        @didDismiss="setOpenMantenimiento(false)">
+      <ion-modal
+        :breakpoints="[0.1, 0.7, 1]"
+        :initialBreakpoint="0.7"
+        :is-open="isOpenRefMantenimiento"
+        @didDismiss="setOpenMantenimiento(false)"
+      >
         <ion-header>
           <ion-toolbar>
             <ion-title>Mantenimientos</ion-title>
@@ -223,7 +444,9 @@
           <ion-card>
             <ion-card-header>
               <ion-avatar>
-                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
+                <img
+                  src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+                />
               </ion-avatar>
             </ion-card-header>
             <ion-card-content>
@@ -247,6 +470,9 @@
 <script lang="ts">
 /* eslint-disable */
 import {
+  IonGrid,
+  IonRow,
+  IonCol,
   IonSelect,
   IonSelectOption,
   IonPage,
@@ -271,7 +497,7 @@ import {
   IonButtons,
   IonMenuButton,
   menuController,
-  IonMenu
+  IonMenu,
 } from "@ionic/vue";
 import { defineComponent, ref, computed, onMounted } from "vue";
 import { useRouter } from "vue-router";
@@ -293,6 +519,9 @@ import "@ionic/vue/css/ionic-swiper.css";
 
 export default defineComponent({
   components: {
+    IonGrid,
+    IonRow,
+    IonCol,
     IonSelect,
     IonSelectOption,
     Swiper,
@@ -317,7 +546,7 @@ export default defineComponent({
     IonList,
     IonButtons,
     IonMenuButton,
-    IonMenu
+    IonMenu,
   },
   setup() {
     const map__: any = ref({});
@@ -331,6 +560,16 @@ export default defineComponent({
     const isOpenRefSeguro = ref(false);
     const isOpenRefMantenimiento = ref(false);
     const mantenimientos = ref([]);
+    const UnidadSelected: object = ref({});
+
+    let unit: any = computed({
+      get: () => {
+        return store.getters.unidad;
+      },
+      set: (val) => {
+        store.commit("setUnidad", val);
+      },
+    });
 
     const model_mecanico: any = ref({
       nombre: "",
@@ -417,6 +656,7 @@ export default defineComponent({
     const setOpen = (state: boolean) => (isOpenRef.value = state);
     const setOpenGrua = (state: boolean) => (isOpenRefGrua.value = state);
     const setOpenSeguro = (state: boolean) => (isOpenRefSeguro.value = state);
+
     const setOpenMantenimiento = (state: boolean) =>
       (isOpenRefMantenimiento.value = state);
 
@@ -492,60 +732,60 @@ export default defineComponent({
         );
         loadingBar.value = false;
 
-        data[data.length + 1] = {
-          i: 22222,
-          f: 4611686018427388000,
-          d: {
-            uri: "https://ftrack.upwaresoft.com/storage/perro.png",
-            pos: {
-              c: 163,
-              f: 1073741825,
-              lc: 0,
-              s: 0,
-              sc: 8,
-              t: 1646028780,
-              x: -78.4666708,
-              y: -0.0671086,
-              z: 2621,
-            },
-          },
-        };
-        data[data.length + 2] = {
-          i: 33333,
-          f: 4611686018427388000,
-          d: {
-            uri: "https://ftrack.upwaresoft.com/storage/bicicleta.png",
-            pos: {
-              c: 163,
-              f: 1073741825,
-              lc: 0,
-              s: 0,
-              sc: 8,
-              t: 1646028780,
-              x: -78.4704517,
-              y: -0.0680566,
-              z: 2621,
-            },
-          },
-        };
-        data[data.length + 3] = {
-          i: 44444,
-          f: 4611686018427388000,
-          d: {
-            uri: "https://ftrack.upwaresoft.com/storage/humano.png",
-            pos: {
-              c: 163,
-              f: 1073741825,
-              lc: 0,
-              s: 0,
-              sc: 8,
-              t: 1646028780,
-              x: -78.4725038,
-              y: -0.0687681,
-              z: 2621,
-            },
-          },
-        };
+        // data[data.length + 1] = {
+        //   i: 22222,
+        //   f: 4611686018427388000,
+        //   d: {
+        //     uri: "https://ftrack.upwaresoft.com/storage/perro.png",
+        //     pos: {
+        //       c: 163,
+        //       f: 1073741825,
+        //       lc: 0,
+        //       s: 0,
+        //       sc: 8,
+        //       t: 1646028780,
+        //       x: -78.4666708,
+        //       y: -0.0671086,
+        //       z: 2621,
+        //     },
+        //   },
+        // };
+        // data[data.length + 2] = {
+        //   i: 33333,
+        //   f: 4611686018427388000,
+        //   d: {
+        //     uri: "https://ftrack.upwaresoft.com/storage/bicicleta.png",
+        //     pos: {
+        //       c: 163,
+        //       f: 1073741825,
+        //       lc: 0,
+        //       s: 0,
+        //       sc: 8,
+        //       t: 1646028780,
+        //       x: -78.4704517,
+        //       y: -0.0680566,
+        //       z: 2621,
+        //     },
+        //   },
+        // };
+        // data[data.length + 3] = {
+        //   i: 44444,
+        //   f: 4611686018427388000,
+        //   d: {
+        //     uri: "https://ftrack.upwaresoft.com/storage/humano.png",
+        //     pos: {
+        //       c: 163,
+        //       f: 1073741825,
+        //       lc: 0,
+        //       s: 0,
+        //       sc: 8,
+        //       t: 1646028780,
+        //       x: -78.4725038,
+        //       y: -0.0687681,
+        //       z: 2621,
+        //     },
+        //   },
+        // };
 
         unidades__.value = data;
 
@@ -685,10 +925,21 @@ export default defineComponent({
       }
     };
 
-    const SetUniViewMap: any = (Unit: Object) => {
+    const SetUniViewMap: any = async (Unit: Object) => {
       try {
-        router.push("/tabs/view-unit");
-        store.commit("setUnidad", Unit);
+        await store.commit("setUnidad", Unit);
+
+        map__.value.setView([unit.value.d.pos.y, unit.value.d.pos.x], 15);
+        // var m = L.marker([unit.value.d.pos.y, unit.value.d.pos.x], {
+        //   icon: L.icon({
+        //     iconUrl: unit.value.d.uri,
+        //     // iconUrl: `https://hst-api.wialon.com${unit.value.d.uri}`,
+        //     iconAnchor: [26, 19],
+        //     shadowUrl: "",
+        //     iconSize: [27, 38],
+        //   }),
+        // });
+        // m.addTo(map__.value);
       } catch (e) {
         console.log(e);
       }
@@ -722,8 +973,8 @@ export default defineComponent({
       GetMantenimientosRealizados();
     });
 
-    const openFirst = () =>  {
-      menuController.open('first');
+    const openFirst = () => {
+      menuController.open("first");
     };
     return {
       modules: [Autoplay],
@@ -739,12 +990,42 @@ export default defineComponent({
       mantenimientos,
       setOpenMantenimiento,
       isOpenRefMantenimiento,
-      openFirst
+      openFirst,
+      menuController,
+      unidades__,
+      UnidadSelected,
+      SetUniViewMap
     };
   },
 });
 </script>
 <style scoped>
+.content-j {
+  background: linear-gradient(
+    180deg,
+    rgba(116, 207, 139, 0.838) 10%,
+    rgba(32, 140, 255, 0.789) 90%
+  );
+  height: 100vh;
+}
+.divider-j {
+  background: white;
+  height: 5px;
+  border-radius: 50px;
+}
+.grid-j {
+  position: relative;
+  top: 5%;
+  left: -5px;
+}
+.menu-j {
+  height: 45%;
+  position: absolute;
+  top: 10%;
+  border-radius: 0px 50px 50px 0px;
+  width: 300px;
+}
+
 .i-item {
   position: absolute;
   top: 5px;
@@ -776,7 +1057,7 @@ export default defineComponent({
   border-radius: 10px 10px 10px 10px;
   transform: translate(0px, -250%);
 }
-ion-backdrop  {
-    display: none !important;
-} 
+ion-backdrop {
+  display: none !important;
+}
 </style>
