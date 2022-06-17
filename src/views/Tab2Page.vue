@@ -2,16 +2,12 @@
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar class="t-toolbar">
-        <!-- <ion-tab-button tab="tab4" href="/tabs/config-page">
-          <ion-label><small> Configuración </small></ion-label>
-        </ion-tab-button> -->
-        <!-- <ion-title> TE LLEVO DRIVER</ion-title> -->
-        <ion-buttons slot="start" style="    position: absolute;left: 20px;">
-            <ion-icon src="https://icons8.com/icon/82749/menu"></ion-icon>
-        </ion-buttons>
-        <ion-item>
-          <ion-label>Vehiculo</ion-label>
-          <ion-select interface="popover">
+        <ion-button fill="clear" @click="openFirst">
+          <img src="https://img.icons8.com/material-sharp/24/undefined/menu--v1.png" />
+        </ion-button>
+        <ion-item style="position: absolute; top: 5px; left: 39px; width: 80%;">
+          <ion-label style="width: 10px; margin-left: 20px;">Vehiculo</ion-label>
+          <ion-select interface="popover" style="position: relative; min-width: 70%">
             <ion-select-option value="nes">NES asdasdasdasdasdasd</ion-select-option>
             <ion-select-option value="n64">Nintendo64</ion-select-option>
             <ion-select-option value="ps">PlayStation</ion-select-option>
@@ -22,53 +18,98 @@
         </ion-item>
       </ion-toolbar>
     </ion-header>
-    <ion-content :fullscreen="true">
+      <ion-menu side="start" menu-id="first" content-id="main">
+        <ion-header>
+          <ion-toolbar color="primary">
+            <ion-title>Start Menu</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <ion-list>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+            <ion-item>Menu Item</ion-item>
+          </ion-list>
+        </ion-content>
+      </ion-menu>
+    <ion-content :fullscreen="true" id="main">
       <div id="map" style="width: 100%; height: 100%; z-index: 1" />
+
+
+
+
       <swiper class="style-j" :autoplay="true">
         <swiper-slide>
-          <ion-button
-            expand="full"
-            style="width: 100%; height: 50px"
-            @click="setOpen(true)"
-          >
+          <ion-button expand="full" style="width: 100%; height: 50px" @click="setOpen(true)">
             Mecanico
           </ion-button>
         </swiper-slide>
         <swiper-slide>
-          <ion-button
-            expand="full"
-            style="width: 100%; height: 50px"
-            @click="setOpenGrua(true)"
-          >
+          <ion-button expand="full" style="width: 100%; height: 50px" @click="setOpenGrua(true)">
             Grua
           </ion-button>
         </swiper-slide>
         <swiper-slide>
-          <ion-button
-            expand="full"
-            style="width: 100%; height: 50px"
-            @click="setOpenSeguro(true)"
-          >
+          <ion-button expand="full" style="width: 100%; height: 50px" @click="setOpenSeguro(true)">
             Seguro
           </ion-button>
         </swiper-slide>
         <swiper-slide>
-          <ion-button
-            expand="full"
-            style="width: 100%; height: 50px"
-            @click="setOpenMantenimiento(true)"
-          >
+          <ion-button expand="full" style="width: 100%; height: 50px" @click="setOpenMantenimiento(true)">
             Mantenimientos
           </ion-button>
         </swiper-slide>
       </swiper>
 
-      <ion-modal
-        :breakpoints="[0.1, 0.7, 1]"
-        :initialBreakpoint="0.7"
-        :is-open="isOpenRef"
-        @didDismiss="setOpen(false)"
-      >
+      <ion-modal :breakpoints="[0.1, 0.7, 1]" :initialBreakpoint="0.7" :is-open="isOpenRef"
+        @didDismiss="setOpen(false)">
         <ion-header>
           <ion-toolbar>
             <ion-title>Mecanico de Confianza</ion-title>
@@ -78,55 +119,33 @@
           <ion-card>
             <ion-card-header>
               <ion-avatar>
-                <img
-                  src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-                />
+                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
               </ion-avatar>
             </ion-card-header>
             <ion-card-content>
               <ion-item>
                 <ion-label position="floating">Nombre</ion-label>
-                <ion-input
-                  v-model="model_mecanico.nombre"
-                  disabled
-                  readonly
-                ></ion-input>
+                <ion-input v-model="model_mecanico.nombre" disabled readonly></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label position="floating">Correo</ion-label>
-                <ion-input
-                  v-model="model_mecanico.correo"
-                  disabled
-                  readonly
-                ></ion-input>
+                <ion-input v-model="model_mecanico.correo" disabled readonly></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label position="floating">Numero de telefono</ion-label>
-                <ion-input
-                  v-model="model_mecanico.telefono"
-                  disabled
-                  readonly
-                ></ion-input>
+                <ion-input v-model="model_mecanico.telefono" disabled readonly></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label position="floating">Dirección</ion-label>
-                <ion-input
-                  v-model="model_mecanico.direccion"
-                  disabled
-                  readonly
-                ></ion-input>
+                <ion-input v-model="model_mecanico.direccion" disabled readonly></ion-input>
               </ion-item>
             </ion-card-content>
           </ion-card>
         </ion-content>
       </ion-modal>
 
-      <ion-modal
-        :breakpoints="[0.1, 0.7, 1]"
-        :initialBreakpoint="0.7"
-        :is-open="isOpenRefGrua"
-        @didDismiss="setOpenGrua(false)"
-      >
+      <ion-modal :breakpoints="[0.1, 0.7, 1]" :initialBreakpoint="0.7" :is-open="isOpenRefGrua"
+        @didDismiss="setOpenGrua(false)">
         <ion-header>
           <ion-toolbar>
             <ion-title>Prestador de Grua</ion-title>
@@ -136,55 +155,33 @@
           <ion-card>
             <ion-card-header>
               <ion-avatar>
-                <img
-                  src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-                />
+                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
               </ion-avatar>
             </ion-card-header>
             <ion-card-content>
               <ion-item>
                 <ion-label position="floating">Nombre</ion-label>
-                <ion-input
-                  v-model="model_grua.nombre"
-                  disabled
-                  readonly
-                ></ion-input>
+                <ion-input v-model="model_grua.nombre" disabled readonly></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label position="floating">Correo</ion-label>
-                <ion-input
-                  v-model="model_grua.correo"
-                  disabled
-                  readonly
-                ></ion-input>
+                <ion-input v-model="model_grua.correo" disabled readonly></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label position="floating">Numero de telefono</ion-label>
-                <ion-input
-                  v-model="model_grua.telefono"
-                  disabled
-                  readonly
-                ></ion-input>
+                <ion-input v-model="model_grua.telefono" disabled readonly></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label position="floating">Dirección</ion-label>
-                <ion-input
-                  v-model="model_grua.direccion"
-                  disabled
-                  readonly
-                ></ion-input>
+                <ion-input v-model="model_grua.direccion" disabled readonly></ion-input>
               </ion-item>
             </ion-card-content>
           </ion-card>
         </ion-content>
       </ion-modal>
 
-      <ion-modal
-        :breakpoints="[0.1, 0.7, 1]"
-        :initialBreakpoint="0.7"
-        :is-open="isOpenRefSeguro"
-        @didDismiss="setOpenSeguro(false)"
-      >
+      <ion-modal :breakpoints="[0.1, 0.7, 1]" :initialBreakpoint="0.7" :is-open="isOpenRefSeguro"
+        @didDismiss="setOpenSeguro(false)">
         <ion-header>
           <ion-toolbar>
             <ion-title>Poliza de Seguro</ion-title>
@@ -194,47 +191,29 @@
           <ion-card>
             <ion-card-header>
               <ion-avatar>
-                <img
-                  src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-                />
+                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
               </ion-avatar>
             </ion-card-header>
             <ion-card-content>
               <ion-item>
                 <ion-label position="floating">Nombre</ion-label>
-                <ion-input
-                  v-model="model_seguro.nombre"
-                  disabled
-                  readonly
-                ></ion-input>
+                <ion-input v-model="model_seguro.nombre" disabled readonly></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label position="floating">Identificacion</ion-label>
-                <ion-input
-                  v-model="model_seguro.identificacion"
-                  disabled
-                  readonly
-                ></ion-input>
+                <ion-input v-model="model_seguro.identificacion" disabled readonly></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label position="floating">Poliza</ion-label>
-                <ion-input
-                  v-model="model_seguro.poliza"
-                  disabled
-                  readonly
-                ></ion-input>
+                <ion-input v-model="model_seguro.poliza" disabled readonly></ion-input>
               </ion-item>
             </ion-card-content>
           </ion-card>
         </ion-content>
       </ion-modal>
 
-      <ion-modal
-        :breakpoints="[0.1, 0.7, 1]"
-        :initialBreakpoint="0.7"
-        :is-open="isOpenRefMantenimiento"
-        @didDismiss="setOpenMantenimiento(false)"
-      >
+      <ion-modal :breakpoints="[0.1, 0.7, 1]" :initialBreakpoint="0.7" :is-open="isOpenRefMantenimiento"
+        @didDismiss="setOpenMantenimiento(false)">
         <ion-header>
           <ion-toolbar>
             <ion-title>Mantenimientos</ion-title>
@@ -244,9 +223,7 @@
           <ion-card>
             <ion-card-header>
               <ion-avatar>
-                <img
-                  src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-                />
+                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
               </ion-avatar>
             </ion-card-header>
             <ion-card-content>
@@ -293,6 +270,8 @@ import {
   IonList,
   IonButtons,
   IonMenuButton,
+  menuController,
+  IonMenu
 } from "@ionic/vue";
 import { defineComponent, ref, computed, onMounted } from "vue";
 import { useRouter } from "vue-router";
@@ -338,6 +317,7 @@ export default defineComponent({
     IonList,
     IonButtons,
     IonMenuButton,
+    IonMenu
   },
   setup() {
     const map__: any = ref({});
@@ -742,6 +722,9 @@ export default defineComponent({
       GetMantenimientosRealizados();
     });
 
+    const openFirst = () =>  {
+      menuController.open('first');
+    };
     return {
       modules: [Autoplay],
       isOpenRef,
@@ -756,20 +739,32 @@ export default defineComponent({
       mantenimientos,
       setOpenMantenimiento,
       isOpenRefMantenimiento,
+      openFirst
     };
   },
 });
 </script>
 <style scoped>
-.t-toolbar{
-    width: 90%;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 50%);
-    height: 52px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 6px 1px;
+.i-item {
+  position: absolute;
+  top: 5px;
+  height: 40px;
+  background: red;
+  left: 50%;
+  width: 70%;
+  transform: translate(-30%, 0px);
 }
+
+.t-toolbar {
+  width: 90%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  height: 52px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 6px 1px;
+}
+
 .style-j {
   position: absolute;
   background: #ff000000;
@@ -781,4 +776,7 @@ export default defineComponent({
   border-radius: 10px 10px 10px 10px;
   transform: translate(0px, -250%);
 }
+ion-backdrop  {
+    display: none !important;
+} 
 </style>
