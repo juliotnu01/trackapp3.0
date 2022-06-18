@@ -26,7 +26,7 @@
                   side="end"
                   style="
                     text-align: center;
-                    font-size: 10px;
+                    font-size: 7px;
                     text-transform: capitalize;
                     height: 50px;
                     text-decoration: none;
@@ -56,7 +56,7 @@
                   side="end"
                   style="
                     text-align: center;
-                    font-size: 10px;
+                    font-size: 7px;
                     text-transform: capitalize;
                     height: 50px;
                     text-decoration: none;
@@ -86,7 +86,7 @@
                   side="end"
                   style="
                     text-align: center;
-                    font-size: 10px;
+                    font-size: 7px;
                     text-transform: capitalize;
                     height: 50px;
                     text-decoration: none;
@@ -116,7 +116,7 @@
                   side="end"
                   style="
                     text-align: center;
-                    font-size: 10px;
+                    font-size: 7px;
                     text-transform: capitalize;
                     height: 50px;
                     text-decoration: none;
@@ -144,7 +144,7 @@
                   side="end"
                   style="
                     text-align: center;
-                    font-size: 10px;
+                    font-size: 7px;
                     text-transform: capitalize;
                     height: 50px;
                     text-decoration: none;
@@ -173,7 +173,7 @@
                   side="end"
                   style="
                     text-align: center;
-                    font-size: 10px;
+                    font-size: 7px;
                     text-transform: capitalize;
                     height: 50px;
                     text-decoration: none;
@@ -202,7 +202,7 @@
                   side="end"
                   style="
                     text-align: center;
-                    font-size: 10px;
+                    font-size: 7px;
                     text-transform: capitalize;
                     height: 50px;
                     text-decoration: none;
@@ -232,7 +232,7 @@
                   side="end"
                   style="
                     text-align: center;
-                    font-size: 10px;
+                    font-size: 7px;
                     text-transform: capitalize;
                     height: 50px;
                     text-decoration: none;
