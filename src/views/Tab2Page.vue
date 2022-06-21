@@ -8,8 +8,10 @@
         <ion-title>
           <ion-item>
             <ion-label style="width: 25%; position: absolute">Vehiculo</ion-label>
-            <ion-select interface="popover" style="position: absolute; right: 9px; min-width: 72%" v-model="UnidadSelected" @ionChange="SetUniViewMap(UnidadSelected)" >
-              <ion-select-option :value="unidad" v-for="(unidad, u) in unidades__" :key="u">{{ unidad.d.nm }}</ion-select-option>
+            <ion-select interface="popover" style="position: absolute; right: 9px; min-width: 72%"
+              v-model="UnidadSelected" @ionChange="SetUniViewMap(UnidadSelected)">
+              <ion-select-option :value="unidad" v-for="(unidad, u) in unidades__" :key="u">{{ unidad.d.nm }}
+              </ion-select-option>
             </ion-select>
           </ion-item>
         </ion-title>
@@ -21,28 +23,21 @@
           <ion-grid>
             <ion-row>
               <ion-col>
-                <ion-button
-                  fill="clear"
-                  side="end"
-                  style="
+                <ion-button @click="CmdParqueoSeguro" fill="clear" side="end" style="
                     text-align: center;
                     font-size: 7px;
                     text-transform: capitalize;
                     height: 50px;
                     text-decoration: none;
                     color: white;
-                  "
-                >
+                  ">
                   <div>
                     <div>
-                      <img
-                        src="https://img.icons8.com/ios/20/undefined/shield.png"
-                        style="
+                      <img src="https://img.icons8.com/ios/20/undefined/shield.png" style="
                           position: relative;
                           left: 50%;
                           transform: translate(-50%, -5px);
-                        "
-                      />
+                        " />
                     </div>
                     <div>
                       <p>Parqueo <br />Seguro</p>
@@ -51,28 +46,21 @@
                 </ion-button>
               </ion-col>
               <ion-col>
-                <ion-button
-                  fill="clear"
-                  side="end"
-                  style="
+                <ion-button @click="CmdAperturaDePuertas" fill="clear" side="end" style="
                     text-align: center;
                     font-size: 7px;
                     text-transform: capitalize;
                     height: 50px;
                     text-decoration: none;
                     color: white;
-                  "
-                >
+                  ">
                   <div>
                     <div>
-                      <img
-                        src="https://img.icons8.com/ios/20/undefined/shield.png"
-                        style="
+                      <img src="https://img.icons8.com/ios/20/undefined/shield.png" style="
                           position: relative;
                           left: 50%;
                           transform: translate(-50%, -5px);
-                        "
-                      />
+                        " />
                     </div>
                     <div>
                       <p>Aperturas de <br />Puertas</p>
@@ -81,28 +69,21 @@
                 </ion-button>
               </ion-col>
               <ion-col>
-                <ion-button
-                  fill="clear"
-                  side="end"
-                  style="
+                <ion-button @click="CmdbloqueoAuto" fill="clear" side="end" style="
                     text-align: center;
                     font-size: 7px;
                     text-transform: capitalize;
                     height: 50px;
                     text-decoration: none;
                     color: white;
-                  "
-                >
+                  ">
                   <div>
                     <div>
-                      <img
-                        src="https://img.icons8.com/ios/20/undefined/shield.png"
-                        style="
+                      <img src="https://img.icons8.com/ios/20/undefined/shield.png" style="
                           position: relative;
                           left: 50%;
                           transform: translate(-50%, -5px);
-                        "
-                      />
+                        " />
                     </div>
                     <div>
                       <p>Bloquear <br />Motor</p>
@@ -111,147 +92,117 @@
                 </ion-button>
               </ion-col>
               <ion-col>
-                <ion-button
-                  fill="clear"
-                  side="end"
-                  style="
+                <ion-button @click="CmdSOS" fill="clear" side="end" style="
                     text-align: center;
                     font-size: 7px;
                     text-transform: capitalize;
                     height: 50px;
                     text-decoration: none;
                     color: white;
-                  "
-                >
+                  ">
                   <div>
                     <div>
-                      <img
-                        src="https://img.icons8.com/ios/20/undefined/shield.png"
-                        style="
+                      <img src="https://img.icons8.com/ios/20/undefined/shield.png" style="
                           position: relative;
                           left: 50%;
                           transform: translate(-50%, -5px);
-                        "
-                      />
+                        " />
                     </div>
-                    <div><p>SOS</p></div>
+                    <div>
+                      <p>SOS</p>
+                    </div>
                   </div>
                 </ion-button>
               </ion-col>
               <ion-col>
-                <ion-button
-                  fill="clear"
-                  side="end"
-                  style="
+                <ion-button fill="clear" side="end" style="
                     text-align: center;
                     font-size: 7px;
                     text-transform: capitalize;
                     height: 50px;
                     text-decoration: none;
                     color: white;
-                  "
-                  @click="setOpen(true)"
-                >
+                  " @click="setOpen(true)">
                   <div>
                     <div>
-                      <img
-                        src="https://img.icons8.com/ios/20/undefined/shield.png"
-                        style="
+                      <img src="https://img.icons8.com/ios/20/undefined/shield.png" style="
                           position: relative;
                           left: 50%;
                           transform: translate(-50%, -5px);
-                        "
-                      />
+                        " />
                     </div>
-                    <div><p>Mecanico</p></div>
+                    <div>
+                      <p>Mecanico</p>
+                    </div>
                   </div>
                 </ion-button>
               </ion-col>
               <ion-col>
-                <ion-button
-                  fill="clear"
-                  side="end"
-                  style="
+                <ion-button fill="clear" side="end" style="
                     text-align: center;
                     font-size: 7px;
                     text-transform: capitalize;
                     height: 50px;
                     text-decoration: none;
                     color: white;
-                  "
-                  @click="setOpenGrua(true)"
-                >
+                  " @click="setOpenGrua(true)">
                   <div>
                     <div>
-                      <img
-                        src="https://img.icons8.com/ios/20/undefined/shield.png"
-                        style="
+                      <img src="https://img.icons8.com/ios/20/undefined/shield.png" style="
                           position: relative;
                           left: 50%;
                           transform: translate(-50%, -5px);
-                        "
-                      />
+                        " />
                     </div>
-                    <div><p>Grua</p></div>
+                    <div>
+                      <p>Grua</p>
+                    </div>
                   </div>
                 </ion-button>
               </ion-col>
               <ion-col>
-                <ion-button
-                  fill="clear"
-                  side="end"
-                  style="
+                <ion-button fill="clear" side="end" style="
                     text-align: center;
                     font-size: 7px;
                     text-transform: capitalize;
                     height: 50px;
                     text-decoration: none;
                     color: white;
-                  "
-                  @click="setOpenSeguro(true)"
-                >
+                  " @click="setOpenSeguro(true)">
                   <div>
                     <div>
-                      <img
-                        src="https://img.icons8.com/ios/20/undefined/shield.png"
-                        style="
+                      <img src="https://img.icons8.com/ios/20/undefined/shield.png" style="
                           position: relative;
                           left: 50%;
                           transform: translate(-50%, -5px);
-                        "
-                        @click="setOpenSeguro(true)"
-                      />
+                        " @click="setOpenSeguro(true)" />
                     </div>
-                    <div><p>Seguro</p></div>
+                    <div>
+                      <p>Seguro</p>
+                    </div>
                   </div>
                 </ion-button>
               </ion-col>
               <ion-col>
-                <ion-button
-                  fill="clear"
-                  side="end"
-                  style="
+                <ion-button fill="clear" side="end" style="
                     text-align: center;
                     font-size: 7px;
                     text-transform: capitalize;
                     height: 50px;
                     text-decoration: none;
                     color: white;
-                  "
-                  @click="setOpenMantenimiento(true)"
-                >
+                  " @click="setOpenMantenimiento(true)">
                   <div>
                     <div>
-                      <img
-                        src="https://img.icons8.com/ios/20/undefined/shield.png"
-                        style="
+                      <img src="https://img.icons8.com/ios/20/undefined/shield.png" style="
                           position: relative;
                           left: 50%;
                           transform: translate(-50%, -5px);
-                        "
-                      />
+                        " />
                     </div>
-                    <div><p>Mantenimientos</p></div>
+                    <div>
+                      <p>Mantenimientos</p>
+                    </div>
                   </div>
                 </ion-button>
               </ion-col>
@@ -263,12 +214,8 @@
     </ion-menu>
     <ion-content :fullscreen="true" id="main">
       <div id="map" style="width: 100%; height: 100%; z-index: 1" />
-      <ion-modal
-        :breakpoints="[0.1, 0.7, 1]"
-        :initialBreakpoint="0.7"
-        :is-open="isOpenRef"
-        @didDismiss="setOpen(false)"
-      >
+      <ion-modal :breakpoints="[0.1, 0.7, 1]" :initialBreakpoint="0.7" :is-open="isOpenRef"
+        @didDismiss="setOpen(false)">
         <ion-header>
           <ion-toolbar>
             <ion-title>Mecanico de Confianza</ion-title>
@@ -278,55 +225,33 @@
           <ion-card>
             <ion-card-header>
               <ion-avatar>
-                <img
-                  src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-                />
+                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
               </ion-avatar>
             </ion-card-header>
             <ion-card-content>
               <ion-item>
                 <ion-label position="floating">Nombre</ion-label>
-                <ion-input
-                  v-model="model_mecanico.nombre"
-                  disabled
-                  readonly
-                ></ion-input>
+                <ion-input v-model="model_mecanico.nombre" disabled readonly></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label position="floating">Correo</ion-label>
-                <ion-input
-                  v-model="model_mecanico.correo"
-                  disabled
-                  readonly
-                ></ion-input>
+                <ion-input v-model="model_mecanico.correo" disabled readonly></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label position="floating">Numero de telefono</ion-label>
-                <ion-input
-                  v-model="model_mecanico.telefono"
-                  disabled
-                  readonly
-                ></ion-input>
+                <ion-input v-model="model_mecanico.telefono" disabled readonly></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label position="floating">Dirección</ion-label>
-                <ion-input
-                  v-model="model_mecanico.direccion"
-                  disabled
-                  readonly
-                ></ion-input>
+                <ion-input v-model="model_mecanico.direccion" disabled readonly></ion-input>
               </ion-item>
             </ion-card-content>
           </ion-card>
         </ion-content>
       </ion-modal>
 
-      <ion-modal
-        :breakpoints="[0.1, 0.7, 1]"
-        :initialBreakpoint="0.7"
-        :is-open="isOpenRefGrua"
-        @didDismiss="setOpenGrua(false)"
-      >
+      <ion-modal :breakpoints="[0.1, 0.7, 1]" :initialBreakpoint="0.7" :is-open="isOpenRefGrua"
+        @didDismiss="setOpenGrua(false)">
         <ion-header>
           <ion-toolbar>
             <ion-title>Prestador de Grua</ion-title>
@@ -336,55 +261,33 @@
           <ion-card>
             <ion-card-header>
               <ion-avatar>
-                <img
-                  src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-                />
+                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
               </ion-avatar>
             </ion-card-header>
             <ion-card-content>
               <ion-item>
                 <ion-label position="floating">Nombre</ion-label>
-                <ion-input
-                  v-model="model_grua.nombre"
-                  disabled
-                  readonly
-                ></ion-input>
+                <ion-input v-model="model_grua.nombre" disabled readonly></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label position="floating">Correo</ion-label>
-                <ion-input
-                  v-model="model_grua.correo"
-                  disabled
-                  readonly
-                ></ion-input>
+                <ion-input v-model="model_grua.correo" disabled readonly></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label position="floating">Numero de telefono</ion-label>
-                <ion-input
-                  v-model="model_grua.telefono"
-                  disabled
-                  readonly
-                ></ion-input>
+                <ion-input v-model="model_grua.telefono" disabled readonly></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label position="floating">Dirección</ion-label>
-                <ion-input
-                  v-model="model_grua.direccion"
-                  disabled
-                  readonly
-                ></ion-input>
+                <ion-input v-model="model_grua.direccion" disabled readonly></ion-input>
               </ion-item>
             </ion-card-content>
           </ion-card>
         </ion-content>
       </ion-modal>
 
-      <ion-modal
-        :breakpoints="[0.1, 0.7, 1]"
-        :initialBreakpoint="0.7"
-        :is-open="isOpenRefSeguro"
-        @didDismiss="setOpenSeguro(false)"
-      >
+      <ion-modal :breakpoints="[0.1, 0.7, 1]" :initialBreakpoint="0.7" :is-open="isOpenRefSeguro"
+        @didDismiss="setOpenSeguro(false)">
         <ion-header>
           <ion-toolbar>
             <ion-title>Poliza de Seguro</ion-title>
@@ -394,47 +297,29 @@
           <ion-card>
             <ion-card-header>
               <ion-avatar>
-                <img
-                  src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-                />
+                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
               </ion-avatar>
             </ion-card-header>
             <ion-card-content>
               <ion-item>
                 <ion-label position="floating">Nombre</ion-label>
-                <ion-input
-                  v-model="model_seguro.nombre"
-                  disabled
-                  readonly
-                ></ion-input>
+                <ion-input v-model="model_seguro.nombre" disabled readonly></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label position="floating">Identificacion</ion-label>
-                <ion-input
-                  v-model="model_seguro.identificacion"
-                  disabled
-                  readonly
-                ></ion-input>
+                <ion-input v-model="model_seguro.identificacion" disabled readonly></ion-input>
               </ion-item>
               <ion-item>
                 <ion-label position="floating">Poliza</ion-label>
-                <ion-input
-                  v-model="model_seguro.poliza"
-                  disabled
-                  readonly
-                ></ion-input>
+                <ion-input v-model="model_seguro.poliza" disabled readonly></ion-input>
               </ion-item>
             </ion-card-content>
           </ion-card>
         </ion-content>
       </ion-modal>
 
-      <ion-modal
-        :breakpoints="[0.1, 0.7, 1]"
-        :initialBreakpoint="0.7"
-        :is-open="isOpenRefMantenimiento"
-        @didDismiss="setOpenMantenimiento(false)"
-      >
+      <ion-modal :breakpoints="[0.1, 0.7, 1]" :initialBreakpoint="0.7" :is-open="isOpenRefMantenimiento"
+        @didDismiss="setOpenMantenimiento(false)">
         <ion-header>
           <ion-toolbar>
             <ion-title>Mantenimientos</ion-title>
@@ -444,9 +329,7 @@
           <ion-card>
             <ion-card-header>
               <ion-avatar>
-                <img
-                  src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-                />
+                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
               </ion-avatar>
             </ion-card-header>
             <ion-card-content>
@@ -498,6 +381,8 @@ import {
   IonMenuButton,
   menuController,
   IonMenu,
+  toastController,
+  alertController
 } from "@ionic/vue";
 import { defineComponent, ref, computed, onMounted } from "vue";
 import { useRouter } from "vue-router";
@@ -561,6 +446,7 @@ export default defineComponent({
     const isOpenRefMantenimiento = ref(false);
     const mantenimientos = ref([]);
     const UnidadSelected: object = ref({});
+    let model: any = ref({});
 
     let unit: any = computed({
       get: () => {
@@ -590,6 +476,11 @@ export default defineComponent({
       identificacion: "",
       poliza: "",
     });
+
+    let btn_parqueoseguro: any = ref(null);
+    let btn_aperturaDePuertas: any = ref(null);
+    let btn_bloqueoAuto: any = ref(null);
+    let btn_btnSOS: any = ref(null);
 
     const GetSeguroNombre = async () => {
       var { value } = await Storage.get({ key: "Data_seguro_nombre" });
@@ -653,12 +544,67 @@ export default defineComponent({
       mantenimientos.value = JSON.parse(value || "{}");
     };
 
-    const setOpen = (state: boolean) => (isOpenRef.value = state);
-    const setOpenGrua = (state: boolean) => (isOpenRefGrua.value = state);
-    const setOpenSeguro = (state: boolean) => (isOpenRefSeguro.value = state);
+    const setOpen = async (state: boolean) => {
+      if (Object.entries(unit.value).length <= 0) {
+        const toast = await toastController.create({
+          header: "¨¡Advertencia!",
+          message: "Debe Seleccionar una unidad",
+          position: "top",
+          duration: 1000,
+          color: "warning",
+        });
+        await toast.present();
+      } else {
 
-    const setOpenMantenimiento = (state: boolean) =>
-      (isOpenRefMantenimiento.value = state);
+        isOpenRef.value = state
+      }
+    };
+    const setOpenGrua = async (state: boolean) => {
+      if (Object.entries(unit.value).length <= 0) {
+        const toast = await toastController.create({
+          header: "¨¡Advertencia!",
+          message: "Debe Seleccionar una unidad",
+          position: "top",
+          duration: 1000,
+          color: "warning",
+        });
+        await toast.present();
+      } else {
+        isOpenRefGrua.value = state
+      }
+    };
+    const setOpenSeguro = async (state: boolean) => {
+
+      if (Object.entries(unit.value).length <= 0) {
+        const toast = await toastController.create({
+          header: "¨¡Advertencia!",
+          message: "Debe Seleccionar una unidad",
+          position: "top",
+          duration: 1000,
+          color: "warning",
+        });
+        await toast.present();
+      } else {
+
+        isOpenRefSeguro.value = state
+      }
+
+    };
+    const setOpenMantenimiento = async (state: boolean) => {
+      if (Object.entries(unit.value).length <= 0) {
+        const toast = await toastController.create({
+          header: "¨¡Advertencia!",
+          message: "Debe Seleccionar una unidad",
+          position: "top",
+          duration: 1000,
+          color: "warning",
+        });
+        await toast.present();
+      } else {
+
+        isOpenRefMantenimiento.value = state
+      }
+    };
 
     let token: any = computed({
       get: () => {
@@ -666,6 +612,15 @@ export default defineComponent({
       },
       set: (val: any) => {
         store.commit("setTOKEN", val);
+      },
+    });
+
+    let unidades: any = computed({
+      get: () => {
+        return store.getters.unidades;
+      },
+      set: (val: any) => {
+        store.commit("setUnidades", val);
       },
     });
 
@@ -686,6 +641,35 @@ export default defineComponent({
         store.commit("SetloadingBar", val);
       },
     });
+
+    let sid: any = computed({
+      get: () => {
+        return store.getters.sid;
+      },
+      set: (val) => {
+        store.commit("setSid", val);
+      },
+    });
+
+    let formatDate = (date: any): any => {
+      var hours = date.getHours();
+      var minutes = date.getMinutes();
+      var ampm = hours >= 12 ? "pm" : "am";
+      hours = hours % 12;
+      hours = hours ? hours : 12; // the hour '0' should be '12'
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      var strTime = hours + ":" + minutes + " " + ampm;
+      return (
+        date.getMonth() +
+        1 +
+        "/" +
+        date.getDate() +
+        "/" +
+        date.getFullYear() +
+        "  " +
+        strTime
+      );
+    };
 
     const InitMap = async () => {
       map__.value = L.map("map", { zoomControl: false }).setView([0, 0]);
@@ -732,60 +716,7 @@ export default defineComponent({
         );
         loadingBar.value = false;
 
-        // data[data.length + 1] = {
-        //   i: 22222,
-        //   f: 4611686018427388000,
-        //   d: {
-        //     uri: "https://ftrack.upwaresoft.com/storage/perro.png",
-        //     pos: {
-        //       c: 163,
-        //       f: 1073741825,
-        //       lc: 0,
-        //       s: 0,
-        //       sc: 8,
-        //       t: 1646028780,
-        //       x: -78.4666708,
-        //       y: -0.0671086,
-        //       z: 2621,
-        //     },
-        //   },
-        // };
-        // data[data.length + 2] = {
-        //   i: 33333,
-        //   f: 4611686018427388000,
-        //   d: {
-        //     uri: "https://ftrack.upwaresoft.com/storage/bicicleta.png",
-        //     pos: {
-        //       c: 163,
-        //       f: 1073741825,
-        //       lc: 0,
-        //       s: 0,
-        //       sc: 8,
-        //       t: 1646028780,
-        //       x: -78.4704517,
-        //       y: -0.0680566,
-        //       z: 2621,
-        //     },
-        //   },
-        // };
-        // data[data.length + 3] = {
-        //   i: 44444,
-        //   f: 4611686018427388000,
-        //   d: {
-        //     uri: "https://ftrack.upwaresoft.com/storage/humano.png",
-        //     pos: {
-        //       c: 163,
-        //       f: 1073741825,
-        //       lc: 0,
-        //       s: 0,
-        //       sc: 8,
-        //       t: 1646028780,
-        //       x: -78.4725038,
-        //       y: -0.0687681,
-        //       z: 2621,
-        //     },
-        //   },
-        // };
+
 
         unidades__.value = data;
 
@@ -891,6 +822,16 @@ export default defineComponent({
                   Object.prototype.hasOwnProperty.call(unit.d, "pos") &&
                   unit.d.pos
                 ) {
+                  await Storage.set({
+                    key: unit.i,
+                    value: JSON.stringify({
+                      mecanico: {},
+                      grua: {},
+                      mantenimiento: [],
+                      seguro: {}
+                    }),
+                  });
+                  unidades.value = data;
                   var marker;
                   var unitPos = unit.d.pos;
                   map__.value.setView([unitPos.y, unitPos.x], 5);
@@ -919,7 +860,6 @@ export default defineComponent({
               break;
           }
         });
-        // setInterval(() => listenEventUnits(), 5000);
       } catch (error) {
         console.log(error);
       }
@@ -928,20 +868,480 @@ export default defineComponent({
     const SetUniViewMap: any = async (Unit: Object) => {
       try {
         await store.commit("setUnidad", Unit);
-
         map__.value.setView([unit.value.d.pos.y, unit.value.d.pos.x], 15);
-        // var m = L.marker([unit.value.d.pos.y, unit.value.d.pos.x], {
-        //   icon: L.icon({
-        //     iconUrl: unit.value.d.uri,
-        //     // iconUrl: `https://hst-api.wialon.com${unit.value.d.uri}`,
-        //     iconAnchor: [26, 19],
-        //     shadowUrl: "",
-        //     iconSize: [27, 38],
-        //   }),
-        // });
-        // m.addTo(map__.value);
+
       } catch (e) {
         console.log(e);
+      }
+    };
+
+    const CmdParqueoSeguro = async () => {
+      if (Object.entries(unit.value).length <= 0) {
+        const toast = await toastController.create({
+          header: "¨¡Advertencia!",
+          message: "Debe Seleccionar una unidad",
+          position: "top",
+          duration: 1000,
+          color: "warning",
+        });
+        await toast.present();
+      } else {
+        const alert = await alertController.create({
+          header: "Alerta",
+          subHeader: "Comando Parqueo seguro",
+          message: ` ${btn_parqueoseguro.value
+            ? "<strong>¿Desea desactivar parqueo seguro?</strong>"
+            : "<strong>¿Desea activar parqueo seguro?</strong> "
+            }  `,
+          buttons: [
+            {
+              text: "Cancel",
+              role: "cancel",
+              cssClass: "secondary",
+              id: "cancel-button",
+            },
+            {
+              text: "Okay",
+              id: "confirm-button",
+              handler: async () => {
+                if (!btn_parqueoseguro.value) {
+                  btn_parqueoseguro.value = !btn_parqueoseguro.value;
+                  var fd: any = new FormData();
+                  var fd1: any = new FormData();
+                  var params = { key: token.value };
+                  var url = `http://dev.virtualearth.net/REST/v1/Locations/${unit.value.d.pos.y},${unit.value.d.pos.x}` + L.Util.getParamString(params);
+                  let addres: any = await axios(url);
+                  var direccion_Unidad = addres.data.resourceSets[0].resources[0].address.formattedAddress;
+
+                  fd.append("params", `{"n":"Parqueo seguro ${unit.value.d.nm}","d":"${direccion_Unidad}","t":3,"w":100,"f":112,"c":2566966476,"tc":16733440,"ts":12,"min":0,"max":18,"libId":"","path":"","p":[{"x":${unit.value.d.pos.y},"y":${unit.value.d.pos.x},"r":100}],"itemId":26322,"id":${unit.value.i},"callMode":"create"}`);
+                  fd.append("sid", sid.value);
+
+                  const response: any = await fetch(
+                    `https://plataforma.sesagps.com/wialon/ajax.html?svc=resource/update_zone&sid=${sid.value}`,
+                    {
+                      method: "POST", // *GET, POST, PUT, DELETE, etc.
+                      mode: "no-cors", // no-cors, *cors, same-origin
+                      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+                      credentials: "same-origin", // include, *same-origin, omit
+                      headers: {
+                        "Content-Type": "application/json",
+                        // 'Content-Type': 'application/x-www-form-urlencoded',
+                      },
+                      redirect: "follow", // manual, *follow, error
+                      referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                      body: fd, // body data type must match "Content-Type" header
+                    }
+                  );
+
+                  model = {
+                    icon: unit,
+                    comando: "Parqueo Seguro",
+                    mensaje: `Se ha activado el parqueo seguro`,
+                    nombre: unit,
+                    f_notifi: formatDate(new Date()),
+                    response:
+                      response.hasOwnProperty("error") === 7
+                        ? "Error del lado del servidor "
+                        : "Respuesta exitosa del servidor",
+                  };
+                  store.commit("setNotificaciones", model);
+
+                  const toast = await toastController.create({
+                    header: "Parqueo seguro",
+                    message: "Comando Ejecutado con exito",
+                    position: "top",
+                    duration: 2000,
+                    color: "success",
+                  });
+                  await toast.present();
+                } else {
+                  btn_parqueoseguro.value = !btn_parqueoseguro.value;
+
+                  model = {
+                    icon: unit,
+                    comando: "Parqueo Seguro",
+                    mensaje: `Se ha desactivado el parqueo seguro`,
+                    nombre: unit,
+                    f_notifi: formatDate(new Date()),
+                    // response: response.hasOwnProperty('error') === 7 ? 'Error del lado del servidor ' : 'Respuesta exitosa del servidor'
+                    response: "Respuesta exitosa del servidor",
+                  };
+                  store.commit("setNotificaciones", model);
+
+                  const toast = await toastController.create({
+                    header: "Parqueo seguro",
+                    message: "Comando Ejecutado con exito",
+                    position: "top",
+                    duration: 2000,
+                    color: "success",
+                  });
+                  await toast.present();
+                }
+              },
+            },
+          ],
+        });
+        await alert.present();
+        const { role } = await alert.onDidDismiss();
+      }
+    };
+    const CmdAperturaDePuertas = async () => {
+      if (Object.entries(unit.value).length <= 0) {
+        const toast = await toastController.create({
+          header: "¨¡Advertencia!",
+          message: "Debe Seleccionar una unidad",
+          position: "top",
+          duration: 1000,
+          color: "warning",
+        });
+        await toast.present();
+      } else {
+        const alert = await alertController.create({
+          header: "Alerta",
+          subHeader: "Comando Aperturar pruertas",
+          message: `${btn_aperturaDePuertas.value
+            ? "<strong>¿Desea cerrar  las pruebas?</strong>"
+            : "<strong>¿Desea aperturar  las pruebas?</strong> "
+            }  `,
+          buttons: [
+            {
+              text: "Cancel",
+              role: "cancel",
+              cssClass: "secondary",
+              id: "cancel-button",
+            },
+            {
+              text: "Okay",
+              id: "confirm-button",
+              handler: async () => {
+                if (!btn_aperturaDePuertas.value) {
+                  btn_aperturaDePuertas.value = !btn_aperturaDePuertas.value;
+                  var fd: any = new FormData();
+
+                  fd.append(
+                    "params",
+                    `{"params":[{"svc":"unit/exec_cmd","params":{"itemId":51591,"commandName":"Apertura de Puertas","linkType":"","param":"2|00:00:03","timeout":60,"flags":0}}],"flags":0}`
+                  );
+                  fd.append("sid", sid.value);
+
+                  const response: any = await fetch(
+                    `https://plataforma.sesagps.com/wialon/ajax.html?svc=core/batch&sid=${sid.value}`,
+                    {
+                      method: "POST", // *GET, POST, PUT, DELETE, etc.
+                      mode: "no-cors", // no-cors, *cors, same-origin
+                      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+                      credentials: "same-origin", // include, *same-origin, omit
+                      headers: {
+                        "Content-Type": "application/json",
+                        // 'Content-Type': 'application/x-www-form-urlencoded',
+                      },
+                      redirect: "follow", // manual, *follow, error
+                      referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                      body: fd, // body data type must match "Content-Type" header
+                    }
+                  );
+
+                  model = {
+                    icon: unit,
+                    comando: "Apertura/Cierre de Pruertas",
+                    mensaje: `Se ha aperturado las pruetas de la unidad`,
+                    nombre: unit,
+                    f_notifi: formatDate(new Date()),
+                    response:
+                      response.hasOwnProperty("error") === 7
+                        ? "Error del lado del servidor "
+                        : "Respuesta exitosa del servidor",
+                  };
+                  store.commit("setNotificaciones", model);
+                  const toast = await toastController.create({
+                    header: "Apertura de pruertas",
+                    message: "Comando Ejecutado con exito",
+                    position: "top",
+                    duration: 2000,
+                    color: "success",
+                  });
+                  await toast.present();
+                } else {
+                  var fdn: any = new FormData();
+                  btn_aperturaDePuertas.value = !btn_aperturaDePuertas.value;
+
+                  fdn.append(
+                    "params",
+                    `{"params":[{"svc":"unit/exec_cmd","params":{"itemId":51591,"commandName":"Desactivar puertas","linkType":"","param":"2|","timeout":60,"flags":0}}],"flags":0}`
+                  );
+                  fdn.append("sid", sid.value);
+
+                  const response: any = await fetch(
+                    `https://plataforma.sesagps.com/wialon/ajax.html?svc=core/batch&sid=${sid.value}`,
+                    {
+                      method: "POST", // *GET, POST, PUT, DELETE, etc.
+                      mode: "no-cors", // no-cors, *cors, same-origin
+                      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+                      credentials: "same-origin", // include, *same-origin, omit
+                      headers: {
+                        "Content-Type": "application/json",
+                        // 'Content-Type': 'application/x-www-form-urlencoded',
+                      },
+                      redirect: "follow", // manual, *follow, error
+                      referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                      body: fdn, // body data type must match "Content-Type" header
+                    }
+                  );
+
+                  model = {
+                    icon: unit,
+                    comando: "Apertura/Cierre de Pruertas",
+                    mensaje: `Se ha aperturado las pruetas de la unidad`,
+                    nombre: unit,
+                    f_notifi: formatDate(new Date()),
+                    response:
+                      response.hasOwnProperty("error") === 7
+                        ? "Error del lado del servidor "
+                        : "Respuesta exitosa del servidor",
+                  };
+                  store.commit("setNotificaciones", model);
+
+                  const toast = await toastController.create({
+                    header: "Apertura/Cierre de pruertas",
+                    message: "Comando Ejecutado con exito",
+                    position: "top",
+                    duration: 2000,
+                    color: "warning",
+                  });
+                  await toast.present();
+                }
+              },
+            },
+          ],
+        });
+        await alert.present();
+        const { role } = await alert.onDidDismiss();
+      }
+    };
+    const CmdbloqueoAuto = async () => {
+      if (Object.entries(unit.value).length <= 0) {
+        const toast = await toastController.create({
+          header: "¨¡Advertencia!",
+          message: "Debe Seleccionar una unidad",
+          position: "top",
+          duration: 1000,
+          color: "warning",
+        });
+        await toast.present();
+      } else {
+        const alert = await alertController.create({
+          header: "Alerta",
+          subHeader: "Comando bloquer motor",
+          message: ` ${btn_bloqueoAuto.value
+            ? "<strong>¿Desea activar el motor?</strong>"
+            : "<strong> ¿Desea desactivar el motor? </strong> "
+            }  `,
+          buttons: [
+            {
+              text: "Cancel",
+              role: "cancel",
+              cssClass: "secondary",
+              id: "cancel-button",
+            },
+            {
+              text: "Okay",
+              id: "confirm-button",
+              handler: async () => {
+                if (!btn_bloqueoAuto.value) {
+                  btn_bloqueoAuto.value = !btn_bloqueoAuto.value;
+
+                  var fdn: any = new FormData();
+
+                  fdn.append(
+                    "params",
+                    `{"params":[{"svc":"unit/exec_cmd","params":{"itemId":51591,"commandName":"Bloquear Motor","linkType":"","param":"1|","timeout":60,"flags":0}}],"flags":0}`
+                  );
+                  fdn.append("sid", sid.value);
+
+                  const response: any = await fetch(
+                    `https://plataforma.sesagps.com/wialon/ajax.html?svc=core/batch&sid=${sid.value}`,
+                    {
+                      method: "POST", // *GET, POST, PUT, DELETE, etc.
+                      mode: "no-cors", // no-cors, *cors, same-origin
+                      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+                      credentials: "same-origin", // include, *same-origin, omit
+                      headers: {
+                        "Content-Type": "application/json",
+                        // 'Content-Type': 'application/x-www-form-urlencoded',
+                      },
+                      redirect: "follow", // manual, *follow, error
+                      referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                      body: fdn, // body data type must match "Content-Type" header
+                    }
+                  );
+
+                  model = {
+                    icon: unit,
+                    comando: "Comando Bloqueo motor",
+                    mensaje: `Se ha bloqueado el motor de la unidad`,
+                    nombre: unit,
+                    f_notifi: formatDate(new Date()),
+                    response:
+                      response.hasOwnProperty("error") === 7
+                        ? "Error del lado del servidor "
+                        : "Respuesta exitosa del servidor",
+                  };
+                  store.commit("setNotificaciones", model);
+
+                  const toast = await toastController.create({
+                    header: "Bloqueo Motor",
+                    message: "Comando Ejecutado con exito",
+                    position: "top",
+                    duration: 2000,
+                    color: "warning",
+                  });
+                  await toast.present();
+                } else {
+                  btn_bloqueoAuto.value = !btn_bloqueoAuto.value;
+                  var fd: any = new FormData();
+
+                  fd.append(
+                    "params",
+                    `{"params":[{"svc":"unit/exec_cmd","params":{"itemId":51591,"commandName":"Desbloquear Motor","linkType":"","param":"1|","timeout":60,"flags":0}}],"flags":0}`
+                  );
+                  fd.append("sid", sid.value);
+
+                  const response: any = await fetch(
+                    `https://plataforma.sesagps.com/wialon/ajax.html?svc=core/batch&sid=${sid.value}`,
+                    {
+                      method: "POST", // *GET, POST, PUT, DELETE, etc.
+                      mode: "no-cors", // no-cors, *cors, same-origin
+                      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+                      credentials: "same-origin", // include, *same-origin, omit
+                      headers: {
+                        "Content-Type": "application/json",
+                        // 'Content-Type': 'application/x-www-form-urlencoded',
+                      },
+                      redirect: "follow", // manual, *follow, error
+                      referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                      body: fd, // body data type must match "Content-Type" header
+                    }
+                  );
+
+                  model = {
+                    icon: unit,
+                    comando: "Comando Desbloquear motor",
+                    mensaje: `Se ha Desbloqueado el motor de la unidad`,
+                    nombre: unit,
+                    f_notifi: formatDate(new Date()),
+                    response:
+                      response.hasOwnProperty("error") === 7
+                        ? "Error del lado del servidor "
+                        : "Respuesta exitosa del servidor",
+                  };
+                  store.commit("setNotificaciones", model);
+
+                  const toast = await toastController.create({
+                    header: "Bloqueo Motor",
+                    message: "Comando Ejecutado con exito",
+                    position: "top",
+                    duration: 2000,
+                    color: "success",
+                  });
+                  await toast.present();
+                }
+              },
+            },
+          ],
+        });
+        await alert.present();
+        const { role } = await alert.onDidDismiss();
+      }
+    };
+    const CmdSOS = async () => {
+      if (Object.entries(unit.value).length <= 0) {
+        const toast = await toastController.create({
+          header: "¨¡Advertencia!",
+          message: "Debe Seleccionar una unidad",
+          position: "top",
+          duration: 1000,
+          color: "warning",
+        });
+        await toast.present();
+      } else {
+        const alert = await alertController.create({
+          header: "Alerta",
+          subHeader: "Comando S.O.S.",
+          message: ` ${btn_bloqueoAuto.value
+            ? "<strong>¿ESTA SEGURO QUE DESEA ACTIVAR EL BOTON SOS?</strong>"
+            : "<strong>¿ESTA SEGURO QUE DESEA DESACTIVAR EL BOTON SOS?</strong> "
+            }  `,
+          buttons: [
+            {
+              text: "Cancel",
+              role: "cancel",
+              cssClass: "secondary",
+              id: "cancel-button",
+              handler: () => { },
+            },
+            {
+              text: "Okay",
+              id: "confirm-button",
+              handler: async () => {
+                if (!btn_btnSOS.value) {
+                  btn_btnSOS.value = !btn_btnSOS.value;
+
+                  model = {
+                    icon: unit,
+                    comando: "S.O.S",
+                    mensaje: `SE HA ACTIVADO LA SEÑAL S.O.S`,
+                    nombre: unit,
+                    f_notifi: formatDate(new Date()),
+                    // response: response.hasOwnProperty('error') === 7 ? 'Error del lado del servidor ' : 'Respuesta exitosa del servidor'
+                    response: "Respuesta exitosa del servidor",
+                  };
+
+                  store.commit("setNotificaciones", model);
+
+                  const toast = await toastController.create({
+                    header: "S.O.S ACTIVADO",
+                    message: "Comando Ejecutado con exito",
+                    position: "top",
+                    color: "danger",
+                    buttons: [
+                      {
+                        side: "start",
+                        text: "Desactivar",
+                        handler: async () => {
+                          model = {
+                            icon: unit,
+                            comando: "S.O.S",
+                            mensaje: `SE HA DESACTIVADO LA SEÑAL S.O.S`,
+                            nombre: unit,
+                            f_notifi: formatDate(new Date()),
+                            // response: response.hasOwnProperty('error') === 7 ? 'Error del lado del servidor ' : 'Respuesta exitosa del servidor'
+                            response: "Respuesta exitosa del servidor",
+                          };
+
+                          btn_btnSOS.value = !btn_btnSOS.value;
+
+                          store.commit("setNotificaciones", model);
+
+                          const toast = await toastController.create({
+                            header: "S.O.S Desactivado",
+                            message: "Comando Ejecutado con exito",
+                            position: "top",
+                            duration: 2000,
+                            color: "success",
+                          });
+                          await toast.present();
+                        },
+                      },
+                    ],
+                  });
+                  await toast.present();
+                } else {
+                }
+              },
+            },
+          ],
+        });
+        await alert.present();
       }
     };
 
@@ -994,30 +1394,35 @@ export default defineComponent({
       menuController,
       unidades__,
       UnidadSelected,
-      SetUniViewMap
+      SetUniViewMap,
+      CmdParqueoSeguro,
+      CmdAperturaDePuertas,
+      CmdbloqueoAuto,
+      CmdSOS
     };
   },
 });
 </script>
 <style scoped>
 .content-j {
-  background: linear-gradient(
-    180deg,
-    rgba(116, 207, 139, 0.838) 10%,
-    rgba(32, 140, 255, 0.789) 90%
-  );
+  background: linear-gradient(180deg,
+      rgba(116, 207, 139, 0.838) 10%,
+      rgba(32, 140, 255, 0.789) 90%);
   height: 100vh;
 }
+
 .divider-j {
   background: white;
   height: 5px;
   border-radius: 50px;
 }
+
 .grid-j {
   position: relative;
   top: 5%;
   left: -5px;
 }
+
 .menu-j {
   height: 45%;
   position: absolute;
@@ -1057,6 +1462,7 @@ export default defineComponent({
   border-radius: 10px 10px 10px 10px;
   transform: translate(0px, -250%);
 }
+
 ion-backdrop {
   display: none !important;
 }

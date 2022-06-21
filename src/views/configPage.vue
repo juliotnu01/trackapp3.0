@@ -1,5 +1,22 @@
 <template>
   <ion-page>
+    <ion-header :translucent="true">
+      <ion-toolbar class="t-toolbar">
+        <ion-buttons slot="start" @click="Storeinfo">
+          <img src="https://img.icons8.com/ios-glyphs/30/000000/save--v1.png" />
+        </ion-buttons>
+        <ion-title>
+          <ion-item>
+            <ion-label style="width: 25%; position: absolute">Vehiculo</ion-label>
+            <ion-select v-model="unidad_selected" interface="popover"
+              style="position: absolute; right: 9px; min-width: 72%" @ionChange="getInfoUnidad">
+              <ion-select-option :value="unidad" v-for="(unidad, u) in unidades" :key="u">{{ unidad.d.nm }}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
     <ion-content :fullscreen="true">
       <ion-card>
         <ion-card-header>
@@ -12,21 +29,22 @@
         <ion-card-content>
           <ion-item>
             <ion-label position="floating">Nombre</ion-label>
-            <ion-input v-model="var_computed_mecanico_nombre"></ion-input>
+            <ion-input v-model="model_mecanico.nombre"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label position="floating">Correo</ion-label>
-            <ion-input v-model="var_computed_mecanico_correo"></ion-input>
+            <ion-input v-model="model_mecanico.correo"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label position="floating">Numero de telefono</ion-label>
-            <ion-input v-model="var_computed_mecanico_telefono"></ion-input>
-            <a href="tel:1-562-867-5309">Click to Call!</a>
+            <ion-input v-model="model_mecanico.telefono"></ion-input>
+            <!-- <a href="tel:1-562-867-5309">Click to Call!</a> -->
           </ion-item>
           <ion-item>
             <ion-label position="floating">Dirección</ion-label>
-            <ion-input v-model="var_computed_mecanico_direccion"></ion-input>
+            <ion-input v-model="model_mecanico.direccion"></ion-input>
           </ion-item>
+        
         </ion-card-content>
       </ion-card>
       <ion-card>
@@ -40,20 +58,20 @@
         <ion-card-content>
           <ion-item>
             <ion-label position="floating">Nombre</ion-label>
-            <ion-input v-model="var_computed_grua_nombre"></ion-input>
+            <ion-input v-model="model_grua.nombre"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label position="floating">Correo</ion-label>
-            <ion-input v-model="var_computed_grua_correo"></ion-input>
+            <ion-input v-model="model_grua.correo"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label position="floating">Numero de telefono</ion-label>
-            <ion-input v-model="var_computed_grua_telefono"></ion-input>
+            <ion-input v-model="model_grua.telefono"></ion-input>
             <a href="tel:1-562-867-5309">Click to Call!</a>
           </ion-item>
           <ion-item>
             <ion-label position="floating">Dirección</ion-label>
-            <ion-input v-model="var_computed_grua_direccion"></ion-input>
+            <ion-input v-model="model_grua.direccion"></ion-input>
           </ion-item>
         </ion-card-content>
       </ion-card>
@@ -99,7 +117,7 @@
           </ion-item>
           <ion-item>
             <ion-label position="floating">Descripcion</ion-label>
-            <ion-textarea v-model="model_mantenimiento.descripcion" ></ion-textarea>
+            <ion-textarea v-model="model_mantenimiento.descripcion"></ion-textarea>
           </ion-item>
           <ion-button expand="full" style="margin-top: 10px" @click="StoreMantenimiento">Registrar Mantenimiento
           </ion-button>
@@ -107,9 +125,9 @@
             <ion-list>
               <ion-item v-for="(mantenimiento, m) in mantenimientos" :key="m">
                 <ion-label>
-                  Fecha de mantenimiento: {{mantenimiento.date}} <br/>
-                  Fecha de  proximo mantenimiento: {{mantenimiento.date}} <br/>
-                  Descripción: {{mantenimiento.descripcion}} <br/>
+                  Fecha de mantenimiento: {{ mantenimiento.date }} <br />
+                  Fecha de proximo mantenimiento: {{ mantenimiento.date }} <br />
+                  Descripción: {{ mantenimiento.descripcion }} <br />
                 </ion-label>
               </ion-item>
             </ion-list>
@@ -120,7 +138,7 @@
   </ion-page>
 </template>
 
-<script lang="ts">
+<script >
 /* eslint-disable */
 import {
   IonPage,
@@ -137,12 +155,20 @@ import {
   IonTextarea,
   IonButton,
   IonList,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonSelect,
+  IonSelectOption,
+  toastController
+
 } from "@ionic/vue";
+import { useStore } from "vuex";
+
 import mixinMecanico from "./mixing/MecanicoMixing.vue";
 import mixinGrua from "./mixing/GruaMixing.vue";
 import mixiSeguro from "./mixing/SeguroMixing.vue";
 import mixiMantenimiento from "./mixing/MantenimientoMixing.vue";
-
 export default {
   mixins: [mixinMecanico, mixinGrua, mixiSeguro, mixiMantenimiento],
   components: {
@@ -158,8 +184,80 @@ export default {
     IonLabel,
     IonInput,
     IonTextarea,
-    IonButton
+    IonButton,
+    IonList,
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonSelect,
+    IonSelectOption,
   },
+  data() {
+    return {
+      unidades__: [],
+      store: useStore(),
+      unidad_selected: {}
+    }
+  },
+  computed: {
+    unidades: {
+      get() {
+        return this.store.getters.unidades;
+      },
+      set(val) {
+        this.store.commit("setUnidades", val);
+      },
+    },
+  },
+  methods: {
+    async Storeinfo(data) {
+      if (Object.entries(this.unidad_selected).length <= 0) {
+        const toast = await toastController.create({
+          header: "¨¡Advertencia!",
+          message: "Debe Seleccionar una unidad",
+          position: "top",
+          duration: 1000,
+          color: "warning",
+        });
+        await toast.present();
+      } else {
+        await this.Storage.set({
+          key: this.unidad_selected.i,
+          value: JSON.stringify({
+            mecanico: {
+              nombre: this.model_mecanico.nombre,
+              correo: this.model_mecanico.correo,
+              telefono: this.model_mecanico.telefono,
+              direccion: this.model_mecanico.direccion
+            },
+            grua: {
+              nombre: this.model_grua.nombre,
+              correo: this.model_grua.correo,
+              telefono: this.model_grua.telefono,
+              direccion: this.model_grua.direccion,
+            },
+            mantenimiento: [],
+            seguro: {}
+          }),
+        });
+      }
+    },
+    async getInfoUnidad() {
+      var { value } = await this.Storage.get({ key: this.unidad_selected.i });
+      var data = JSON.parse(value);
+      this.model_mecanico.nombre = data.mecanico.nombre;
+      this.model_mecanico.correo = data.mecanico.correo;
+      this.model_mecanico.telefono = data.mecanico.telefono;
+      this.model_mecanico.direccion = data.mecanico.direccion;
 
-};
+      this.model_grua.nombre  = data.grua.nombre
+      this.model_grua.correo  = data.grua.correo
+      this.model_grua.telefono  = data.grua.telefono
+      this.model_grua.direccion  = data.grua.direccion
+
+
+
+    }
+  }
+}
 </script>

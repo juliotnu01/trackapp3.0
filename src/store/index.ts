@@ -7,7 +7,8 @@ export default createStore({
     sid: '',
     notificaciones:[],
     loadingBar: false,
-    data_sesa:{}
+    data_sesa:{},
+    unidades:[],
 
   },
   getters:{
@@ -17,9 +18,13 @@ export default createStore({
     notificaciones: state => state.notificaciones,
     loadingBar: state => state.loadingBar,
     data_sesa: state => state.data_sesa,
+    unidades: state => state.unidades,
 
   },
   mutations: {
+    setUnidades(state, data){
+      state.unidades = data
+    },
     setDaSesa(state, data){
       state.data_sesa = data
     },
