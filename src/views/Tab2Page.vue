@@ -444,7 +444,7 @@ export default defineComponent({
     const isOpenRefGrua = ref(false);
     const isOpenRefSeguro = ref(false);
     const isOpenRefMantenimiento = ref(false);
-    const mantenimientos = ref([]);
+    const mantenimientos: any = ref([]);
     const UnidadSelected: object = ref({});
     let model: any = ref({});
 
@@ -482,67 +482,35 @@ export default defineComponent({
     let btn_bloqueoAuto: any = ref(null);
     let btn_btnSOS: any = ref(null);
 
-    const GetSeguroNombre = async () => {
-      var { value } = await Storage.get({ key: "Data_seguro_nombre" });
-      model_seguro.nombre = value;
+   
+    const GetInfoUnidad = async (id_unidad: any) => {
+      var { value }: any = await Storage.get({ key: id_unidad });
+      var data: any = JSON.parse(value);
+      model_mecanico.value.nombre = data.mecanico.nombre;
+      model_mecanico.value.correo = data.mecanico.correo;
+      model_mecanico.value.telefono = data.mecanico.telefono;
+      model_mecanico.value.direccion = data.mecanico.direccion;
+
+      model_grua.value.nombre = data.grua.nombre
+      model_grua.value.correo = data.grua.correo
+      model_grua.value.telefono = data.grua.telefono
+      model_grua.value.direccion = data.grua.direccion
+
+      model_seguro.value.nombre = data.seguro.nombre
+      model_seguro.value.identificacion = data.seguro.identificacion
+      model_seguro.value.poliza = data.seguro.poliza
+
+      mantenimientos.value = [];
+      for (let index = 0; index < data.mantenimiento.length; index++) {
+        const element  = data.mantenimiento[index]
+        mantenimientos.value.push(element)
+        
+      }
+
+
     };
 
-    const GetSeguroIdentificacion = async () => {
-      var { value } = await Storage.get({ key: "Data_seguro_identificacion" });
-      model_seguro.identificacion = value;
-    };
-
-    const GetSeguroPoliza = async () => {
-      var { value } = await Storage.get({ key: "Data_seguro_poliza" });
-      model_seguro.poliza = value;
-    };
-
-    const GetMecanicoNombre = async () => {
-      var { value } = await Storage.get({ key: "Data_mecanico_nombre" });
-      model_mecanico.value.nombre = value;
-    };
-
-    const GetMecanicoCorreo = async () => {
-      var { value } = await Storage.get({ key: "Data_mecanico_correo" });
-      model_mecanico.value.correo = value;
-    };
-
-    const GetMecanicoTelefono = async () => {
-      var { value } = await Storage.get({ key: "Data_mecanico_telefono" });
-      model_mecanico.value.telefono = value;
-    };
-
-    const GetMecanicoDireccion = async () => {
-      var { value } = await Storage.get({ key: "Data_mecanico_direccion" });
-      model_mecanico.value.direccion = value;
-    };
-
-    const GetGruaNombre = async () => {
-      var { value } = await Storage.get({ key: "Data_grua_nombre" });
-      model_grua.value.nombre = value;
-    };
-
-    const GetGruaCorreo = async () => {
-      var { value } = await Storage.get({ key: "Data_grua_correo" });
-      model_grua.value.correo = value;
-    };
-
-    const GetGruaTelefono = async () => {
-      var { value } = await Storage.get({ key: "Data_grua_telefono" });
-      model_grua.value.telefono = value;
-    };
-
-    const GetGruaDireccion = async () => {
-      var { value } = await Storage.get({ key: "Data_grua_direccion" });
-      model_grua.value.direccion = value;
-    };
-
-    const GetMantenimientosRealizados = async () => {
-      var { value } = await Storage.get({ key: "Data_mantenimientos" });
-
-      console.log(value);
-      mantenimientos.value = JSON.parse(value || "{}");
-    };
+    
 
     const setOpen = async (state: boolean) => {
       if (Object.entries(unit.value).length <= 0) {
@@ -865,10 +833,11 @@ export default defineComponent({
       }
     };
 
-    const SetUniViewMap: any = async (Unit: Object) => {
+    const SetUniViewMap: any = async (Unit: any) => {
       try {
         await store.commit("setUnidad", Unit);
         map__.value.setView([unit.value.d.pos.y, unit.value.d.pos.x], 15);
+        GetInfoUnidad(Unit.i)
 
       } catch (e) {
         console.log(e);
@@ -1356,21 +1325,6 @@ export default defineComponent({
           initSession();
         }
       }
-    });
-
-    onMounted(() => {
-      GetMecanicoNombre();
-      GetMecanicoCorreo();
-      GetMecanicoTelefono();
-      GetMecanicoDireccion();
-      GetGruaNombre();
-      GetGruaCorreo();
-      GetGruaTelefono();
-      GetGruaDireccion();
-      GetSeguroNombre();
-      GetSeguroIdentificacion();
-      GetSeguroPoliza();
-      GetMantenimientosRealizados();
     });
 
     const openFirst = () => {
